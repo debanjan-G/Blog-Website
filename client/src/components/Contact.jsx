@@ -1,6 +1,7 @@
 import React from 'react';
 import contactBg from "../assets/ContactBG.jpg";
 import Header from './Header';
+import { Link } from 'react-router-dom';
 const Contact = () => {
   return (
 
@@ -9,7 +10,11 @@ const Contact = () => {
       <div className='w-1/2 text-center'>
         <h1 className='font-bold text-6xl my-4'>Have Thoughts or Questions? </h1>
         <p className='text-2xl my-4 text-slate-700'>Drop me a line anytime. Whether it's a question, collaboration opportunity, or just to say hi, we are all ears. Reach out via email, phone, or social media. Looking forward to hearing from you!</p>
-        <button className='bg-slate-900 py-4 px-10 opacity-90 text-white font-bold hover:opacity-100'>GET IN TOUCH</button>
+        <button className='bg-slate-900 py-4 px-10 opacity-90 text-white font-bold hover:opacity-100'>
+        <Link to="/contact-form">
+        GET IN TOUCH
+        </Link>
+        </button>
       </div>
     </div>
     

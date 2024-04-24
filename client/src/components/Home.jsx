@@ -12,6 +12,7 @@ const Home = () => {
       <SearchBar/> 
       <Landing/>
       <Blogs />
+      
         <Contact />
     </div>
   )

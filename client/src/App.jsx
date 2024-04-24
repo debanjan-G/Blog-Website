@@ -10,22 +10,24 @@ import Home from "./components/Home";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import Header from "./components/Header";
+import ContactForm from "./components/ContactForm";
+import BlogArticle from "./components/BlogArticle";
 
 function App() {
   return (
     <Router>
       <div className="sarabun-regular">
-      {/* <Navbar/> */}
-     
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          
+          <Route path="/contact-form" element={<ContactForm />} />
+          <Route path="/blog">
+            <Route path=":id" element={<BlogArticle/>}/>
+          </Route>
         </Routes>
-     
         <Footer />
       </div>
     </Router>
