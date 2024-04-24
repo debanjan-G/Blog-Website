@@ -1,11 +1,13 @@
-import React from 'react'
-import SearchBar from './SearchBar'
-import { Link } from 'react-router-dom'
 
+import { Link } from 'react-router-dom';
+import Button from './Button';
+import SearchBar from './SearchBar'
+
+
+import React from 'react';
 
 const Navbar = () => {
-
-  const handleAnchorTagClick = (e,id) =>{
+  const handleAnchorTagClick = (e, id) => {
     e.preventDefault();
     const target = document.getElementById(id);
     if (target) {
@@ -14,27 +16,31 @@ const Navbar = () => {
         behavior: 'smooth' // Smooth scrolling behavior
       });
     }
-  }
-  
+  };
 
   return (
-    <div className=' ' >
-   <div className="links  p-4 flex justify-start gap-10 font-semibold">
-<h1>❤️</h1>
-     <a href="#home" onClick={(e)=>handleAnchorTagClick(e,'home')}>Home</a>
-     <a href="#blogs" onClick={(e)=>handleAnchorTagClick(e,'blogs')}>Blogs</a>
-     <a href="#about" onClick={(e)=>handleAnchorTagClick(e,'about')}>About</a>
-     <a href="#contact" onClick={(e)=>handleAnchorTagClick(e,'contact')}>Contact</a>
+    // <div>
+    <div className='flex justify-between items-center p-4'>
+      <div className="links flex gap-10 font-semibold">
+        <h1>❤️</h1>
+        <Link to="/" onClick={(e) => handleAnchorTagClick(e, 'home')}>Home</Link>
+        <Link to="/blogs" onClick={(e) => handleAnchorTagClick(e, 'blogs')}>Blogs</Link>
+        <Link to="/about" onClick={(e) => handleAnchorTagClick(e, 'about')}>About</Link>
+        <Link to="/contact" onClick={(e) => handleAnchorTagClick(e, 'contact')}>Contact</Link>
       </div>
-      <div>
-        <SearchBar/>    
-      </div>
-      {/* </div> */}
-      {/* <div className="flex justify-end"> */}
-       
-      {/* </div> */}
-    </div>
-  )
-}
+      <div className='flex gap-2'>
+      <Link to="/register"> <Button >Register</Button></Link>
+      <Link to="/login"> <Button >Log IN</Button></Link>
+     
+     
 
-export default Navbar
+      </div>
+  
+    </div>
+    
+    // </div>
+  );
+};
+
+export default Navbar;
+ 

@@ -1,20 +1,21 @@
+body {
+  margin: 0;
+}
+
 .anton-regular {
   font-family: "Anton", sans-serif;
-  font-weight: 500;
+  font-weight: 400;
   font-style: normal;
 }
+
+/* // <uniquifier>: Use a unique and descriptive class name
+// <weight>: Use a value from 100 to 900 */
 
 .advent-pro-medium {
   font-family: "Advent Pro", sans-serif;
   font-optical-sizing: auto;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
   font-variation-settings:
     "wdth" 100;
-}
-
-.sarabun-regular {
-  font-family: "Sarabun", sans-serif;
-  font-weight: 400;
-  font-style: normal;
 }

@@ -1,8 +1,10 @@
 import React from 'react';
 import contactBg from "../assets/ContactBG.jpg";
-
+import Header from './Header';
 const Contact = () => {
   return (
+
+   
     <div id='contact' className="flex items-center justify-center bg-cover advent-pro-medium bg-center h-screen opacity-95" style={{backgroundImage: `url(${contactBg})`}}>
       <div className='w-1/2 text-center'>
         <h1 className='font-bold text-6xl my-4'>Have Thoughts or Questions? </h1>
@@ -10,6 +12,7 @@ const Contact = () => {
         <button className='bg-slate-900 py-4 px-10 opacity-90 text-white font-bold hover:opacity-100'>GET IN TOUCH</button>
       </div>
     </div>
+    
   );
 };
 
