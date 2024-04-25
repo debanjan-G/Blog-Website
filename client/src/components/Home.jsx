@@ -4,6 +4,7 @@ import Landing from './Landing'
 import Blogs from "./Blogs";
 import Contact from "./Contact";
 import SearchBar from './SearchBar';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
@@ -12,8 +13,7 @@ const Home = () => {
       <SearchBar/> 
       <Landing/>
       <Blogs />
-      
-        <Contact />
+      <Contact />
     </div>
   )
 }
