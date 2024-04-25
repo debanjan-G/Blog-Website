@@ -14,6 +14,7 @@ import ContactForm from "./components/ContactForm";
 import BlogArticle from "./components/BlogArticle";
 import Profile from "./components/Profile";
 import ScrollToTop from "./components/ScrollToTop";
+import CreateBlogForm from "./components/CreateBlogForm";
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/contact-form" element={<ContactForm />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/create-blog" element={<CreateBlogForm />} />
           <Route path="/blog">
             <Route path=":id" element={<BlogArticle />} />
           </Route>

@@ -3,7 +3,8 @@ const { getPosts, createPost, deletePost, updatePost, getAPost } = require('../c
 
 const PostsRouter = express.Router()
 
-PostsRouter.route("/").get(getPosts).post(createPost);
+// PostsRouter.route("/").get(getPosts).post(createPost);
+PostsRouter.route("/").post(createPost);
 PostsRouter.route("/:id").get(getAPost).patch(updatePost).delete(deletePost);
 
 module.exports = PostsRouter

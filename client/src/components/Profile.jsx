@@ -46,7 +46,9 @@ const Profile = ({ statusCode }) => {
         <p className='text-slate-600 border-2 p-4 rounded-md'>{email}</p>
         <img src={ProfileWelcomeImg} alt="" className='object-contain h-80 my-5 rounded-xl' />
         <p className='text-slate-700 text-2xl text-center'>{welcomeMsg}</p>
-
+        <button className='bg-slate-900 py-4 px-10 opacity-90 text-white font-bold hover:opacity-100 my-4 text-lg' onClick={() => { navigate("/create-blog") }}>
+          Compose New Blog
+        </button>
 
       </div>
     </>

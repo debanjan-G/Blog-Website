@@ -2,18 +2,19 @@ const { StatusCodes } = require("http-status-codes")
 const Post = require("../models/Post")
 const { NotFoundError } = require("../errors")
 
-const getPosts = async(req,res) =>{
+// const getPosts = async(req,res) =>{
 
-    const posts = await Post.find({})
-    res.status(StatusCodes.OK).json({success:true,PostCount:posts.length,posts})
-}
+//     const posts = await Post.find({})
+//     res.status(StatusCodes.OK).json({success:true,PostCount:posts.length,posts})
+// }
 
 
 const createPost = async(req,res) =>{
 
-    const {body:{title,content},user} = req;
+    const { title, intro, content, image:imageURL } = req.body;
+    const { user } = req;
  
-    const post = new Post({title,content,author:user.id})
+    const post = new Post({title,intro,content,imageURL,author:user.id})
     await post.save()
 
     res.status(StatusCodes.CREATED).json({success:true,post})
@@ -42,6 +43,7 @@ const updatePost = async(req,res) =>{
 
     res.status(StatusCodes.OK).json({success:true,updatedPost})
 }
+
 const deletePost = async(req,res) =>{
     
     const postID = req.params.id;
@@ -54,4 +56,4 @@ const deletePost = async(req,res) =>{
     res.status(StatusCodes.OK).json({success:true,deletedPost})
 }
 
-module.exports = {getPosts,createPost,getAPost,updatePost,deletePost}
+module.exports = {createPost,getAPost,updatePost,deletePost}
