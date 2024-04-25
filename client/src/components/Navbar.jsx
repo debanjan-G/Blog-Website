@@ -7,9 +7,9 @@ import SearchBar from './SearchBar'
 import React from 'react';
 
 const Navbar = () => {
-let profileRoute = "/login"
-  if(localStorage.getItem("jwt")){
-    profileRoute="/profile"
+  let profileRoute = "/login"
+  if (localStorage.getItem("jwt")) {
+    profileRoute = "/profile"
   }
 
   const handleAnchorTagClick = (e, id) => {
@@ -32,21 +32,20 @@ let profileRoute = "/login"
         <Link to="/blogs" onClick={(e) => handleAnchorTagClick(e, 'blogs')}>Blogs</Link>
         <Link to="/about" onClick={(e) => handleAnchorTagClick(e, 'about')}>About</Link>
         <Link to="/contact" onClick={(e) => handleAnchorTagClick(e, 'contact')}>Contact</Link>
-        <Link to = {profileRoute}>Profile</Link>
+        <Link to={profileRoute}>Profile</Link>
       </div>
       <div className='flex gap-2'>
-      <Link to="/register"> <Button >Register</Button></Link>
-      <Link to="/login"> <Button >Log IN</Button></Link>
-     
-     
+        {/* <Link to="/register"> <Button >Register</Button></Link> */}
+        <Link to="/login"> <Button >Log In</Button></Link>
+
+
 
       </div>
-  
+
     </div>
-    
+
     // </div>
   );
 };
 
 export default Navbar;
- 

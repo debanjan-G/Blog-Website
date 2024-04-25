@@ -9,9 +9,9 @@ import { Link } from 'react-router-dom';
 const Home = () => {
   return (
     <div id='home'>
-      <Navbar/>
-      <SearchBar/> 
-      <Landing/>
+      <Navbar />
+      <SearchBar />
+      <Landing />
       <Blogs />
       <Contact />
     </div>

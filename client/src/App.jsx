@@ -13,12 +13,18 @@ import Header from "./components/Header";
 import ContactForm from "./components/ContactForm";
 import BlogArticle from "./components/BlogArticle";
 import Profile from "./components/Profile";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
+
+
+
   return (
     <Router>
-      <div className="sarabun-regular">
+      <  ScrollToTop />
+      <div className="titillium-web-regular">
         <Routes>
+
           <Route path="/" element={<Home />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/contact" element={<Contact />} />
@@ -27,7 +33,7 @@ function App() {
           <Route path="/contact-form" element={<ContactForm />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/blog">
-            <Route path=":id" element={<BlogArticle/>}/>
+            <Route path=":id" element={<BlogArticle />} />
           </Route>
         </Routes>
         <Footer />
