@@ -59,8 +59,8 @@ const CreateBlogForm = () => {
     return (
         <>
 
-            {/* <LazyLoad> */}
-            <div className=" bg-gradient-to-r from-fuchsia-500 to-cyan-500 py-2 px-4 bg-center h-full  ">
+
+            <div className=" bg-gradient-to-l from-neutral-50 via-violet-600 to-slate-800 py-2 px-4 bg-center h-full  ">
                 <Header />
                 <h1 className='text-6xl text-[#EEEEEE] font-bold  text-center my-5'>CREATE NEW BLOG</h1>
                 <form onSubmit={handleSubmit} className='bg-[#222831] flex flex-col gap-2 py-6 rounded-lg px-10 w-3/4 my-5 mx-auto '>

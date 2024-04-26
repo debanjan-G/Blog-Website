@@ -28,8 +28,8 @@ const Blogs = () => {
 
   return (
 
-    <div className='text-slate-700 w-full mx-auto mb-10' id='blogs'>
-      <h1 className='text-center text-4xl my-4'>LATEST BLOG POSTS</h1>
+    <div className='text-slate-700 w-full mx-auto my-10' id='blogs'>
+      <h1 className='bg-gradient-to-r from-rose-300 to-red-600 bg-clip-text text-transparent text-6xl anton-regular font-semibold text-center my-5'>LATEST BLOG POSTS</h1>
       <div className="blogs flex items-center flex-col md:flex-row md:flex-wrap md:justify-center  ">
         {posts.map((post) => (
           <Blog

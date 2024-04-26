@@ -52,8 +52,10 @@ const Profile = ({ statusCode }) => {
         </button>
       </div>
 
-      <div className='h-screen flex flex-col items-center w-1/2 mx-auto justify-center'>
-        <h1 className='text-6xl font-bold my-4 anton-regular'>Welcome to The Blog, {username}</h1>
+      <div className='h-[80vh] flex flex-col items-center w-1/2 mx-auto justify-center'>
+        <h1 className="text-7xl text-center font-bold my-6 anton-regular bg-gradient-to-r from-blue-800 to-indigo-900 bg-clip-text text-transparent">
+          Welcome to The Blog, {username}
+        </h1>
         <div className="flex gap-2">
           <p className='text-slate-600 border-2 p-4 rounded-md'>{email}</p>
           {posts.length > 0 ? <p className='text-slate-600 border-2 p-4 rounded-md'>Blogs written: {posts.length}</p> : <p className='text-slate-600 border-2 p-4 rounded-md'>{message}</p>}

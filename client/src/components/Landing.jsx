@@ -14,7 +14,7 @@ const Landing = () => {
 
         <div className='flex gap-10 flex-col h-full justify-center items-center w-[50%] mx-auto'>
 
-          <h1 className='text-slate-200 text-7xl anton-regular font-bold text-center'>Ignite Your Creativity with the World of Blogging</h1>
+          <h1 className='bg-gradient-to-r from-amber-500 to-pink-500 bg-clip-text text-transparent text-7xl anton-regular font-bold text-center'>Ignite Your Creativity with the World of Blogging</h1>
           <p className='text-slate-300 font-semibold text-2xl my-2 text-center advent-pro-medium '>Step into a realm where imagination knows no bounds. This is a vibrant community where every voice is celebrated. Whether you're a seasoned wordsmith or just starting out, you can always find inspiration and support here. Happy Blogging!</p>
           <Link to="/register">
             <button className='bg-slate-200 py-4 px-6 font-semibold rounded-lg text-xl opacity-90 hover:opacity-100' >
