@@ -1,9 +1,32 @@
 /* eslint-disable react/prop-types */
-import React from 'react'
+import React, { useState } from 'react'
 import LazyLoad from 'react-lazyload'
 import { useNavigate } from 'react-router-dom'
+import { FaRegEdit } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
+import DeleteSuccessful from './DeleteSuccessful';
+import axios from "axios"
 
-const Blog = ({ id, title, intro, img, tags }) => {
+
+const Blog = ({ id, title, intro, img, tags, isLoggedIn }) => {
+
+  // const [deleted, setDeleted] = useState(false)
+  const navigateTo = useNavigate()
+  const token = localStorage.getItem("jwt")
+
+  const headers = {
+    'Authorization': `Bearer ${token}`
+  }
+
+  const handleDeleteClick = () => {
+    axios.delete(`/api/v1/posts/${id}`, { headers }).then(res => {
+      console.log(res);
+      if (res.status === 200) {
+        navigateTo("/profile/deleted")
+        // setDeleted(true);
+      }
+    }).catch(err => console.log(err));
+  }
 
   const navigate = useNavigate()
   const handleClick = () => {
@@ -11,19 +34,28 @@ const Blog = ({ id, title, intro, img, tags }) => {
   }
 
   return (
-    <div className='flex flex-col items-center justify-center w-1/4 mx-4'>
-      <LazyLoad>
-        <img src={img} alt="" className='h-52 hover:cursor-pointer hover:scale-105 transition my-4' onClick={handleClick} />
-      </LazyLoad>
-      <div className="flex gap-2 flex-wrap justify-center" >
-        {tags && tags.map((tag, index) => <p key={index} className='text-sm font-semibold text-center my-1 bg-sky-400 text-slate-800 p-2 rounded-lg'>{tag}</p>)}
+    <>
+      <div className='flex flex-col items-center justify-center w-[30%] mx-4'>
+        <LazyLoad>
+          <img src={img} alt="" className='h-52 hover:cursor-pointer hover:scale-105 transition my-4' onClick={handleClick} />
+        </LazyLoad>
+        {isLoggedIn &&
+          <div key={id} className="flex gap-4 my-4">
+            <FaRegEdit className='text-4xl hover:text-green-600 hover:cursor-pointer' />
+            <MdDelete onClick={handleDeleteClick} className='text-4xl hover:text-red-500 hover:cursor-pointer' />
+          </div>
+        }
+        <div className="flex gap-2 flex-wrap justify-center" >
+          {tags && tags.map((tag, index) => <p key={index} className='text-sm font-semibold text-center my-1 bg-sky-400 text-slate-800 p-2 rounded-lg'>{tag}</p>)}
+        </div>
+        {/* <p className='my-4 text-blue-600'>{tag}</p> */}
+        <h1 className='text-2xl font-semibold text-center'>{title}</h1>
+        <p className='text-lg text-center my-4'>{intro}</p>
+
+
       </div>
-      {/* <p className='my-4 text-blue-600'>{tag}</p> */}
-      <h1 className='text-2xl font-semibold text-center'>{title}</h1>
-      <p className='text-lg text-center my-4'>{intro}</p>
+    </>
 
-
-    </div>
   )
 }
 

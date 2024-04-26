@@ -22,15 +22,15 @@ const createPost = async(req,res) =>{
 }
 
 
-const getAPost = async(req,res) =>{
+// const getAPost = async(req,res) =>{
 
-    const postID = req.params.id;
-    const post = await Post.findById(postID)
-    if(!post){
-        throw new NotFoundError("Post Not Found")
-    }
-    res.status(StatusCodes.OK).json({success:true,post})
-}
+//     const postID = req.params.id;
+//     const post = await Post.findById(postID)
+//     if(!post){
+//         throw new NotFoundError("Post Not Found")
+//     }
+//     res.status(StatusCodes.OK).json({success:true,post})
+// }
 
 const updatePost = async(req,res) =>{
 
@@ -56,4 +56,4 @@ const deletePost = async(req,res) =>{
     res.status(StatusCodes.OK).json({success:true,deletedPost})
 }
 
-module.exports = {createPost,getAPost,updatePost,deletePost}
+module.exports = {createPost,updatePost,deletePost}

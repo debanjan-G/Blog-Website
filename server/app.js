@@ -35,6 +35,16 @@ const UserRouter = require('./routes/UserRouter');
     res.status(StatusCodes.OK).json({success:true,PostCount:posts.length,posts})
   })
 
+ // Creating GET single post route outside router (containing auth middleware) so that anyone can get a specific post without authentication
+  app.get("/api/v1/posts/:id",async(req,res) =>{
+    const postID = req.params.id;
+    const post = await Post.findById(postID)
+    if(!post){
+      throw new NotFoundError("Post Not Found")
+      }
+    res.status(StatusCodes.OK).json({success:true,post})
+})
+
   // Middlewares
   app.use(express.json())
   app.use("/api/v1/posts",authenticationMiddleware,PostsRouter)
