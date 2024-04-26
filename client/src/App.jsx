@@ -15,6 +15,7 @@ import BlogArticle from "./components/BlogArticle";
 import Profile from "./components/Profile";
 import ScrollToTop from "./components/ScrollToTop";
 import CreateBlogForm from "./components/CreateBlogForm";
+import LazyLoad from "react-lazyload";
 
 function App() {
 
@@ -39,6 +40,7 @@ function App() {
           </Route>
         </Routes>
         <Footer />
+
       </div>
     </Router>
   );

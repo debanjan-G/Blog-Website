@@ -11,10 +11,10 @@ const { NotFoundError } = require("../errors")
 
 const createPost = async(req,res) =>{
 
-    const { title, intro, content, image:imageURL } = req.body;
+    const { title, intro, content,tags, image:imageURL } = req.body;
     const { user } = req;
  
-    const post = new Post({title,intro,content,imageURL,author:user.id})
+    const post = new Post({title,intro,content,tags,imageURL,author:user.id})
     await post.save()
 
     res.status(StatusCodes.CREATED).json({success:true,post})

@@ -28,11 +28,11 @@ const Navbar = () => {
     <div className='flex justify-between items-center p-4'>
       <div className="links flex gap-10 font-semibold">
         <h1>❤️</h1>
-        <Link to="/" onClick={(e) => handleAnchorTagClick(e, 'home')}>Home</Link>
-        <Link to="/blogs" onClick={(e) => handleAnchorTagClick(e, 'blogs')}>Blogs</Link>
-        <Link to="/about" onClick={(e) => handleAnchorTagClick(e, 'about')}>About</Link>
-        <Link to="/contact" onClick={(e) => handleAnchorTagClick(e, 'contact')}>Contact</Link>
-        <Link to={profileRoute}>Profile</Link>
+        <Link to="/" className='hover:text-green-700' onClick={(e) => handleAnchorTagClick(e, 'home')}>Home</Link>
+        <Link to="/blogs" className='hover:text-green-700' onClick={(e) => handleAnchorTagClick(e, 'blogs')}>Blogs</Link>
+        <Link to="/about" className='hover:text-green-700' onClick={(e) => handleAnchorTagClick(e, 'about')}>About</Link>
+        <Link to="/contact" className='hover:text-green-700' onClick={(e) => handleAnchorTagClick(e, 'contact')}>Contact</Link>
+        <Link to={profileRoute} className='hover:text-green-700'>Profile</Link>
       </div>
       <div className='flex gap-2'>
         {/* <Link to="/register"> <Button >Register</Button></Link> */}

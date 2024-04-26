@@ -22,6 +22,7 @@
   //Importing Middlewares
   const customErrorHandler = require("./middlewares/custom-error");
   const authenticationMiddleware = require('./middlewares/authenticate');
+const UserRouter = require('./routes/UserRouter');
 
   // Defining some routes directly
   app.get("/",(req,res)=>{
@@ -38,6 +39,7 @@
   app.use(express.json())
   app.use("/api/v1/posts",authenticationMiddleware,PostsRouter)
   app.use("/api/v1/auth",AuthRouter)
+  app.use("/api/v1/profile",UserRouter)
   app.use(customErrorHandler)
 
   const port = process.env.PORT || 5000;
