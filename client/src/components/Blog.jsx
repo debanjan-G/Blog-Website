@@ -6,17 +6,25 @@ import { FaRegEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import DeleteSuccessful from './DeleteSuccessful';
 import axios from "axios"
+import EditBlogForm from './EditBlogForm';
 
 
-const Blog = ({ id, title, intro, img, tags, isLoggedIn }) => {
+const Blog = ({ id, title, intro, content, img, tags, isLoggedIn }) => {
 
-  // const [deleted, setDeleted] = useState(false)
+  // const [toEdit, setToEdit] = useState(false)
   const navigateTo = useNavigate()
   const token = localStorage.getItem("jwt")
 
   const headers = {
     'Authorization': `Bearer ${token}`
   }
+
+  const handleEditClick = () => {
+    // setToEdit(true)
+    navigateTo("/profile/edit", { state: { id, title, intro, content, img, tags } })
+    console.log("Editing blog...");
+  }
+
 
   const handleDeleteClick = () => {
     axios.delete(`/api/v1/posts/${id}`, { headers }).then(res => {
@@ -33,6 +41,16 @@ const Blog = ({ id, title, intro, img, tags, isLoggedIn }) => {
     navigate(`/blog/${id}`)
   }
 
+  // if (toEdit) {
+  //   return <EditBlogForm
+  //     id={id}
+  //     title={title}
+  //     intro={intro}
+  //     content={content}
+  //     img={img}
+  //     tags={tags} />
+  // }
+
   return (
     <>
       <div className='flex flex-col items-center justify-center w-[30%] mx-4'>
@@ -41,7 +59,7 @@ const Blog = ({ id, title, intro, img, tags, isLoggedIn }) => {
         </LazyLoad>
         {isLoggedIn &&
           <div key={id} className="flex gap-4 my-4">
-            <FaRegEdit className='text-4xl hover:text-green-600 hover:cursor-pointer' />
+            <FaRegEdit onClick={handleEditClick} className='text-4xl hover:text-green-600 hover:cursor-pointer' />
             <MdDelete onClick={handleDeleteClick} className='text-4xl hover:text-red-500 hover:cursor-pointer' />
           </div>
         }

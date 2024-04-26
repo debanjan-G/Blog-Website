@@ -18,7 +18,7 @@ const Profile = ({ statusCode }) => {
 
   useEffect(() => {
     axios.get(`/api/v1/profile/${decoded.id}`).then(res => {
-      console.log(res);
+      // console.log(res);
       if (res.data.posts.length === 0) {
         setMessage(res.data.message);
       }
@@ -45,9 +45,9 @@ const Profile = ({ statusCode }) => {
 
   return (
     <>
-      <div className='flex justify-between m-2 '>
+      <div className='flex justify-between items-center m-2 '>
         <Header />
-        <button className='bg-slate-900 py-4 px-10 opacity-90 text-white font-bold hover:opacity-100' onClick={handleLogout}>
+        <button className='bg-slate-900 h-full py-3 px-10 opacity-90 text-white font-bold hover:opacity-100' onClick={handleLogout}>
           Logout
         </button>
       </div>
@@ -58,10 +58,14 @@ const Profile = ({ statusCode }) => {
           <p className='text-slate-600 border-2 p-4 rounded-md'>{email}</p>
           {posts.length > 0 ? <p className='text-slate-600 border-2 p-4 rounded-md'>Blogs written: {posts.length}</p> : <p className='text-slate-600 border-2 p-4 rounded-md'>{message}</p>}
         </div>
+        {!posts.length > 0 &&
+          <>
+            <img src={ProfileWelcomeImg} alt="" className='object-contain h-80 my-5 rounded-xl' />
 
-        <img src={ProfileWelcomeImg} alt="" className='object-contain h-80 my-5 rounded-xl' />
+            <p className='text-slate-700 text-2xl text-center'>{welcomeMsg}</p>
 
-        <p className='text-slate-700 text-2xl text-center'>{welcomeMsg}</p>
+          </>
+        }
         <button className='bg-slate-900 py-4 px-10 opacity-90 text-white font-bold hover:opacity-100 my-4 text-lg' onClick={() => { navigate("/create-blog") }}>
           Compose New Blog
         </button>
@@ -69,7 +73,7 @@ const Profile = ({ statusCode }) => {
 
       {posts.length > 0 &&
         <div>
-          <h1 className='text-4xl font-semibold text-center my-5'>Your posts:</h1>
+          <h1 className='text-4xl anton-regular text-center my-5'>Your Blogs</h1>
           <div className="blogs flex flex-col justify-center items-center  md:flex-row md:flex-wrap md:justify-evenly">
             {posts.map((post) => (
               <Blog
@@ -77,6 +81,7 @@ const Profile = ({ statusCode }) => {
                 id={post._id}
                 title={post.title}
                 intro={post.intro}
+                content={post.content}
                 tags={post.tags}
                 img={post.imageURL}
                 isLoggedIn={true}

@@ -17,6 +17,8 @@ import ScrollToTop from "./components/ScrollToTop";
 import CreateBlogForm from "./components/CreateBlogForm";
 import LazyLoad from "react-lazyload";
 import DeleteSuccessful from "./components/DeleteSuccessful";
+import EditBlogForm from "./components/EditBlogForm";
+import SuccessfulBlogEdit from "./components/SuccessfulBlogEdit";
 
 function App() {
 
@@ -34,8 +36,13 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/contact-form" element={<ContactForm />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/profile/deleted" element={<DeleteSuccessful />} />
+          <Route path="/profile"  >
+            <Route path="" element={<Profile />} />
+            <Route path="deleted" element={<DeleteSuccessful />} />
+            <Route path="edit" element={<EditBlogForm />} />
+            <Route path="edited" element={<SuccessfulBlogEdit />} />
+          </Route>
+
           <Route path="/create-blog" element={<CreateBlogForm />} />
           <Route path="/blog">
             <Route path=":id" element={<BlogArticle />} />
