@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import authBG from "../assets/Auth-BG-3.jpg"
-import Header from './Header';
+import authBG from "../../assets/Auth-BG-3.jpg"
+import Header from '../Layout/Header';
 
 const ContactForm = () => {
   return (

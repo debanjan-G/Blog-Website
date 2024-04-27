@@ -1,6 +1,7 @@
-import React from 'react'
-import Deleted from "../assets/Deletion-successful.png"
-import Header from './Header'
+// import React from 'react'
+// import Deleted from "../../assets/Deletion-successful.png"
+import Deleted from "../../assets/Deletion-successful.png"
+// import Header from '../Layout/Header'
 import { useNavigate } from 'react-router-dom'
 
 const DeleteSuccessful = () => {

@@ -1,21 +1,18 @@
-import React from 'react'
 import Navbar from './Navbar'
 import Landing from './Landing'
-// import Blogs from "./Blogs";
-import Blogs from './Blogs';
-import Contact from "./Contact";
+import Blogs from '../Blog/Blogs';
+import Contact from "../Blog Forms/Contact";
 import SearchBar from './SearchBar';
-import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
-    <div id='home'>
+    <>
       <Navbar />
-      <SearchBar />
+      {/* <SearchBar /> */}
       <Landing />
       <Blogs />
       <Contact />
-    </div>
+    </>
   )
 }
 

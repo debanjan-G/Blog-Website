@@ -1,33 +1,31 @@
-import Landing from "./components/Landing";
+// import Landing from "./components/Layout/Landing";
 import "./App.css";
-import Navbar from "./components/Navbar";
-import Blogs from "./components/Blogs";
-import Blog from "./components/Blog";
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
+// import Navbar from "./components/Layout/Navbar";
+import Blogs from "./components/Blog/Blogs"
+// import Blog from "./components/Blog/Blog";
+import Contact from "./components/Blog Forms/Contact";
+// import Footer from "./components/Layout/Footer";
+import Footer from "./components/Layout/Footer";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./components/Home";
-import Register from "./components/Register";
-import Login from "./components/Login";
-import ContactForm from "./components/ContactForm";
-import BlogArticle from "./components/BlogArticle";
-import Profile from "./components/Profile";
-import ScrollToTop from "./components/ScrollToTop";
-import CreateBlogForm from "./components/CreateBlogForm";
-import DeleteSuccessful from "./components/DeleteSuccessful";
-import EditBlogForm from "./components/EditBlogForm";
-import SuccessfulBlogEdit from "./components/SuccessfulBlogEdit";
+import Home from "./components/Layout/Home";
+import Register from "./components/Auth Forms/Register";
+import Login from "./components/Auth Forms/Login";
+import ContactForm from "./components/Blog Forms/ContactForm";
+import BlogArticle from "./components/Blog/BlogArticle";
+import Profile from "./components/Layout/Profile";
+import ScrollToTop from "./components/Utils/ScrollToTop";
+import CreateBlogForm from "./components/Blog Forms/CreateBlogForm";
+import DeleteSuccessful from "./components/Action Response/DeleteSuccessful";
+import EditBlogForm from "./components/Blog Forms/EditBlogForm";
+import SuccessfulBlogEdit from "./components/Action Response/SuccessfulBlogEdit";
 
 function App() {
-
-
 
   return (
     <Router>
       <  ScrollToTop />
       <div className="titillium-web-regular">
         <Routes>
-
           <Route path="/" element={<Home />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/contact" element={<Contact />} />
@@ -46,7 +44,6 @@ function App() {
           </Route>
         </Routes>
         <Footer />
-
       </div>
     </Router>
   );

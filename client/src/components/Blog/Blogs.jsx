@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-// import blogPosts from "../data/BlogPosts"
 import Blog from "./Blog";
 import axios from 'axios'
-import NoPostsImage from "../assets/No-posts.png"
+import NoPostsImage from "../../assets/No-posts.png"
 
 const Blogs = () => {
 
@@ -29,7 +28,7 @@ const Blogs = () => {
   return (
 
     <div className='text-slate-700 w-full mx-auto my-10' id='blogs'>
-      <h1 className='bg-gradient-to-r from-rose-300 to-red-600 bg-clip-text text-transparent text-6xl anton-regular font-semibold text-center my-5'>LATEST BLOG POSTS</h1>
+      <h1 className='bg-gradient-to-r from-blue-800 via-violet-600 to-indigo-900 bg-clip-text text-transparent text-6xl anton-regular font-semibold text-center my-5'>Recent Blogs</h1>
       <div className="blogs flex items-center flex-col md:flex-row md:flex-wrap md:justify-center  ">
         {posts.map((post) => (
           <Blog

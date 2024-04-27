@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
-import Header from './Header';
+import { useState } from 'react';
+import Header from '../Layout/Header';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
 

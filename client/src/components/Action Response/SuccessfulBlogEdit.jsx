@@ -1,6 +1,6 @@
 import React from 'react'
-import Header from './Header'
-import BlogEditSuccess from "../assets/JobEditedSuccessfully.png"
+import Header from '../Layout/Header'
+import BlogEditSuccess from "../../assets/JobEditedSuccessfully.png"
 import { useNavigate } from 'react-router-dom'
 
 const SuccessfulBlogEdit = () => {

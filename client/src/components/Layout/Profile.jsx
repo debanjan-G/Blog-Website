@@ -3,10 +3,10 @@
 import React, { useEffect, useState } from 'react';
 import Header from './Header';
 import { jwtDecode } from 'jwt-decode';
-import ProfileWelcomeImg from "../assets/Profile-welcome.png";
+import ProfileWelcomeImg from "../../assets/Profile-welcome.png";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import Blog from './Blog';
+import Blog from '../Blog/Blog';
 
 const Profile = ({ statusCode }) => {
   const [posts, setPosts] = useState([]);

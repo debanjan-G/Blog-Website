@@ -1,6 +1,4 @@
-import React from 'react';
-import contactBg from "../assets/ContactBG.jpg";
-import Header from './Header';
+import contactBg from "../../assets/ContactBG.jpg";
 import { Link } from 'react-router-dom';
 const Contact = () => {
   return (

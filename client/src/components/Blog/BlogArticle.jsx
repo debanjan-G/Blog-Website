@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import Header from './Header';
+import Header from '../Layout/Header';
 import axios from 'axios';
 
 const BlogArticle = () => {

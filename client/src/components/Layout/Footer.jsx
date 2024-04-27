@@ -15,7 +15,7 @@ const Footer = () => {
         <FaGithub className='text-white hover:text-green-600 hover:cursor-pointer' />
         <SiGmail className='text-white hover:text-green-600 hover:cursor-pointer' />
       </div>
-      <p className='text-white'>Copyright © {currentYear} The Blogger </p>
+      <p className='text-white'>Copyright © {currentYear} <span className='advent-pro-medium text-red-600 text-xl shadow-lg'> TheBlogger</span> </p>
     </div>
 
   )

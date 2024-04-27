@@ -1,7 +1,5 @@
-import React from 'react'
-import FailedAuthImage from "../assets/FailedAuth.png"
-import Header from './Header'
-import Button from './Button'
+import FailedAuthImage from "../../assets/FailedAuth.png"
+import Header from '../Layout/Header'
 import { useNavigate } from 'react-router-dom'
 
 

@@ -4,9 +4,9 @@ import LazyLoad from 'react-lazyload'
 import { useNavigate } from 'react-router-dom'
 import { FaRegEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
-import DeleteSuccessful from './DeleteSuccessful';
+import DeleteSuccessful from '../Action Response/DeleteSuccessful';
 import axios from "axios"
-import EditBlogForm from './EditBlogForm';
+import EditBlogForm from '../Blog Forms/EditBlogForm';
 
 
 const Blog = ({ id, title, intro, content, img, tags, isLoggedIn }) => {

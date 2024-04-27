@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import authBG from "../assets/Auth-BG-3.jpg";
-import Header from './Header';
+import authBG from "../../assets/Auth-BG-3.jpg";
+import Header from '../Layout/Header';
 import axios from 'axios';
-import Profile from './Profile';
-import FailedAuth from './FailedAuth';
+import Profile from '../Layout/Profile';
+import FailedAuth from '../Action Response/FailedAuth';
 
 const Login = () => {
   const [userInput, setUserInput] = useState({});
@@ -53,9 +53,9 @@ const Login = () => {
     <>
       {isLoggedIn ? <Profile statusCode={statusCode} /> :
         <>
-          <div className='bg-cover h-full pb-10' style={{ backgroundImage: `url(${authBG})` }}>
+          <div className='bg-cover h-[88vh]  pb-10' style={{ backgroundImage: `url(${authBG})` }}>
             <Header />
-            <div className='flex h-full items-center justify-center mx-1/2 w-full'></div>
+            <div className='flex  items-center justify-center mx-1/2 w-full'></div>
             <div className='bg-slate-900 w-1/3 mx-auto p-10 rounded-lg'>
               <h1 className='text-slate-200 text-4xl text-center'>LOGIN FOR THE BLOG</h1>
               <form onSubmit={submitHandler} className="flex flex-col gap-4 w-full p-5 text-lg">

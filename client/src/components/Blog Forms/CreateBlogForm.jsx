@@ -1,9 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react'
-import CreateBlogBG from "../assets/create-blog-bg2.jpg"
-import Header from './Header'
+import { useEffect, useRef, useState } from 'react'
+import Header from '../Layout/Header'
 import axios from "axios"
-import PostCreated from './PostCreated'
-import LazyLoad from 'react-lazyload'
+import PostCreated from '../Action Response/PostCreated'
+// import LazyLoad from 'react-lazyload'
 
 const CreateBlogForm = () => {
     const [userInput, setUserInput] = useState({})

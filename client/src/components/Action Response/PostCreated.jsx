@@ -1,7 +1,7 @@
 import React from 'react'
-import SuccessfulPostCreation from "../assets/PostCreationComplete.png"
+import SuccessfulPostCreation from "../../assets/PostCreationComplete.png"
 import { useNavigate } from 'react-router-dom'
-import Header from './Header'
+import Header from '../Layout/Header'
 
 const PostCreated = () => {
     const navigate = useNavigate()

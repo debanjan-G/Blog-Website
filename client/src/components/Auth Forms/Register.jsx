@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import authBG from "../assets/Auth-BG-3.jpg";
-import Header from './Header';
-import Profile from './Profile';
+import authBG from "../../assets/Auth-BG-3.jpg";
+import Header from '../Layout/Header';
+import Profile from '../Layout/Profile';
 
 const Register = () => {
   const [userInput, setUserInput] = useState({});
@@ -73,9 +73,9 @@ const Register = () => {
       {isRegistered && <Profile statusCode={statusCode} />}
       {!isRegistered && (
         <>
-          <div className='bg-cover h-full pb-10' style={{ backgroundImage: `url(${authBG})` }}>
+          <div className='bg-cover h-[88vh]  pb-10' style={{ backgroundImage: `url(${authBG})` }}>
             <Header />
-            <div className='flex h-full items-center justify-center mx-1/2 w-full'></div>
+            <div className='flex  items-center justify-center mx-1/2 w-full'></div>
             <div className='bg-slate-900 w-1/3 mx-auto p-10 rounded-lg'>
               <h1 className='text-slate-200 text-4xl text-center'>REGISTER FOR THE BLOG</h1>
               <form className="flex flex-col gap-4 h-full w-full p-5 text-lg" onSubmit={submitHandler}>
