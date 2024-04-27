@@ -9,8 +9,8 @@ const Landing = () => {
 
   return (
     <>
-      {/* <LazyLoad> */}
-      <div className="bg-cover p-5 bg-center h-screen " style={{ backgroundImage: `url(${LandingBG})` }}>
+      
+      <div className="bg-cover p-5 my-5 bg-center h-screen" style={{ backgroundImage: `url(${LandingBG})` }}>
 
         <div className='flex gap-10 flex-col h-full justify-center items-center w-[50%] mx-auto'>
 

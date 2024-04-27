@@ -9,13 +9,11 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import Register from "./components/Register";
 import Login from "./components/Login";
-import Header from "./components/Header";
 import ContactForm from "./components/ContactForm";
 import BlogArticle from "./components/BlogArticle";
 import Profile from "./components/Profile";
 import ScrollToTop from "./components/ScrollToTop";
 import CreateBlogForm from "./components/CreateBlogForm";
-import LazyLoad from "react-lazyload";
 import DeleteSuccessful from "./components/DeleteSuccessful";
 import EditBlogForm from "./components/EditBlogForm";
 import SuccessfulBlogEdit from "./components/SuccessfulBlogEdit";
@@ -42,7 +40,6 @@ function App() {
             <Route path="edit" element={<EditBlogForm />} />
             <Route path="edited" element={<SuccessfulBlogEdit />} />
           </Route>
-
           <Route path="/create-blog" element={<CreateBlogForm />} />
           <Route path="/blog">
             <Route path=":id" element={<BlogArticle />} />

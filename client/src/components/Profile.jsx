@@ -44,7 +44,7 @@ const Profile = ({ statusCode }) => {
   const { username, email } = decoded;
 
   return (
-    <>
+    <div className=''>
       <div className='flex justify-between items-center m-2 '>
         <Header />
         <button className='bg-slate-900 h-full py-3 px-10 opacity-90 text-white font-bold hover:opacity-100' onClick={handleLogout}>
@@ -52,8 +52,8 @@ const Profile = ({ statusCode }) => {
         </button>
       </div>
 
-      <div className='h-[80vh] flex flex-col items-center w-1/2 mx-auto justify-center'>
-        <h1 className="text-7xl text-center font-bold my-6 anton-regular bg-gradient-to-r from-blue-800 to-indigo-900 bg-clip-text text-transparent">
+      <div className=' flex flex-col items-center w-1/2 mx-auto justify-center'>
+        <h1 className="text-7xl text-center font-bold my-6 anton-regular bg-gradient-to-r from-rose-500 via-red-600 to-red-800 bg-clip-text text-transparent">
           Welcome to The Blog, {username}
         </h1>
         <div className="flex gap-2">
@@ -92,7 +92,7 @@ const Profile = ({ statusCode }) => {
           </div>
         </div>
       }
-    </>
+    </div>
   );
 }
 
