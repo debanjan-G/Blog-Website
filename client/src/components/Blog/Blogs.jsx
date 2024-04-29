@@ -28,8 +28,8 @@ const Blogs = () => {
   return (
 
     <div className='text-slate-700 w-full mx-auto my-10' id='blogs'>
-      <h1 className='bg-gradient-to-r from-blue-800 via-violet-600 to-indigo-900 bg-clip-text text-transparent text-6xl anton-regular font-semibold text-center my-5'>Recent Blogs</h1>
-      <div className="blogs flex items-center flex-col md:flex-row md:flex-wrap md:justify-center  ">
+      <h1 className='text-blue-600 text-6xl anton-regular font-semibold text-center my-5'>Recent Blogs</h1>
+      <div className="blogs flex items-center flex-col">
         {posts.map((post) => (
           <Blog
             key={post._id}

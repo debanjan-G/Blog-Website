@@ -84,34 +84,36 @@ const CreateBlogForm = () => {
 
 
     return (
-        <>
 
 
-            <div className=" bg-gradient-to-l from-neutral-50 via-violet-600 to-slate-800 py-2 px-4 bg-center h-full  ">
-                <Header />
-                <h1 className='text-6xl text-[#EEEEEE] font-bold  text-center my-5'>CREATE NEW BLOG</h1>
-                <form onSubmit={handleSubmit} className='bg-[#222831] flex flex-col gap-2 py-6 rounded-lg px-10 w-3/4 my-5 mx-auto '>
-                    <label className='text-xl text-[#EEEEEE]'>Title</label>
-                    <input ref={titleRef} required className='rounded-lg text-2xl text-[#222831] font-semibold bg-[#EEEEEE] py-2 px-4 w-full' type="text" name="" id="title" />
 
-                    <label className='text-xl text-[#EEEEEE]'>Intro</label>
-                    <input ref={introRef} required className='rounded-lg text-2xl text-[#222831] font-semibold bg-[#EEEEEE] py-2 px-4 w-full' type="text" name="" id="intro" />
+        <div className=" bg-slate-200 h-full  ">
+            <Header />
+            <div className="flex flex-col justify-between h-full">
+                <div className="py-5 px-10">
+                    <h1 className='text-6xl text-slate-800 font-bold  text-center my-5'>Create Post</h1>
+                    <form onSubmit={handleSubmit} className='shadow-lg bg-white flex flex-col justify-center gap-2 py-6  px-10 w-3/4  mx-auto '>
+                        <label className='font-semibold text-xl text-slate-800'>Title</label>
+                        <input ref={titleRef} required className=' text-lg text-[#222831]  bg-slate-100 p-3 w-full' type="text" name="" id="title" placeholder='Enter the title of your post' />
 
-                    <label className='text-xl text-[#EEEEEE]'>Content</label>
-                    <textarea ref={contentRef} required className='rounded-lg text-2xl text-[#222831] font-semibold bg-[#EEEEEE] py-2 px-4 w-full resize-none' name="" id="content" rows="10" />
+                        <label className='font-semibold text-xl text-slate-800'>Intro</label>
+                        <input ref={introRef} required className=' text-lg text-[#222831]  bg-slate-100 p-3 w-full' type="text" name="" id="intro" placeholder='Write a brief introduction for your post' />
 
-                    <label className='text-xl text-[#EEEEEE]'>Tags</label>
-                    <input ref={tagsRef} className='rounded-lg text-2xl text-[#222831] font-semibold bg-[#EEEEEE] py-2 px-4 w-full' type="text" name="" id="tags" placeholder="Enter tags (comma-separated)" />
+                        <label className='font-semibold text-xl text-slate-800'>Content</label>
+                        <textarea ref={contentRef} required className=' text-lg text-[#222831]  bg-slate-100 p-3 w-full resize-none' name="" id="content" rows="10" placeholder='Compose your post content' />
 
-                    <label className='text-xl text-[#EEEEEE]'>Image</label>
-                    <input type="file" onChange={handleFileChange} className='rounded-lg text-2xl text-[#222831] font-semibold bg-[#EEEEEE] py-2 px-4 w-full' name="image" id="" />
+                        <label className='font-semibold text-xl text-slate-800'>Tags</label>
+                        <input ref={tagsRef} className=' text-lg text-[#222831] bg-slate-100 p-3 w-full' type="text" name="" id="tags" placeholder='Enter tags for your post, separated by commas' />
 
-                    {/* <input ref={imageRef} required className='rounded-lg text-2xl text-[#222831] font-semibold bg-[#EEEEEE] py-2 px-4 w-full' type="text" name="" id="image" /> */}
-                    {isLoading ? <div className='text-center my-2 text-4xl'><Loader /></div> : <button className='my-4 w-1/4 mx-auto mb-10 bg-[#00ADB5] py-4 px-10 opacity-90 text-white text-2xl font-bold hover:opacity-100'>Create</button>}
+                        <label className='font-semibold text-xl text-slate-800'>Image</label>
+                        <input type="file" onChange={handleFileChange} className=' text-lg text-[#222831]  bg-slate-100 p-3 w-full' name="image" id="" placeholder='Choose an image to upload for your post' />
 
-                </form >
+                        {/* <input ref={imageRef} required className=' text-lg text-[#222831]  bgslatebg-slate-100] p-3 w-full' type="text" name="" id="image" /> */}
+                        {isLoading ? <div className='text-center my-2 text-4xl'><Loader /></div> : <button className='my-4 w-1/6 rounded-lg mx-auto mb-10 bg-slate-800  p-3 opacity-90 text-white text-lg  hover:opacity-100'>Create</button>}
+                    </form >
+                </div >
             </div >
-        </>
+        </div >
     )
 }
 

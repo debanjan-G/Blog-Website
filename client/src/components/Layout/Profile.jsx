@@ -52,9 +52,9 @@ const Profile = ({ statusCode }) => {
         </button>
       </div>
 
-      <div className=' flex flex-col items-center w-1/2 mx-auto justify-center'>
+      <div className=' flex flex-col items-center h-screen w-1/2 mx-auto justify-center'>
         <h1 className="text-7xl text-center font-bold my-6 anton-regular bg-gradient-to-r from-rose-500 via-red-600 to-red-800 bg-clip-text text-transparent">
-          Welcome to The Blog, {username}
+          Its good to have you back, {username}
         </h1>
         <div className="flex gap-2">
           <p className='text-slate-600 border-2 p-4 rounded-md'>{email}</p>
@@ -63,9 +63,7 @@ const Profile = ({ statusCode }) => {
         {!posts.length > 0 &&
           <>
             <img src={dp} alt="DP" className='object-cover h-52 my-5 rounded-xl' />
-
             <p className='text-slate-700 text-2xl text-center'>{welcomeMsg}</p>
-
           </>
         }
         <button className='bg-slate-900 py-4 px-10 opacity-90 text-white font-bold hover:opacity-100 my-4 text-lg' onClick={() => { navigate("/create-blog") }}>
@@ -75,8 +73,8 @@ const Profile = ({ statusCode }) => {
 
       {posts.length > 0 &&
         <div>
-          <h1 className='text-4xl anton-regular text-center my-5'>Your Blogs</h1>
-          <div className="blogs flex flex-col justify-center items-center  md:flex-row md:flex-wrap md:justify-evenly">
+          <h1 className='text-5xl anton-regular text-center px-4 my-4'>YOUR POSTS</h1>
+          <div className="blogs flex flex-col justify-center">
             {posts.map((post) => (
               <Blog
                 key={post._id}

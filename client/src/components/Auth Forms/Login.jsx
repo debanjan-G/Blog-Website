@@ -67,7 +67,7 @@ const Login = () => {
                 <input required ref={emailRef} type="email" name="" id="email" className="bg-[#64748B] text-white py-2 px-4 rounded-md" />
                 <label className='text-[#DBEAFE]'>Password</label>
                 <input required ref={passwordRef} type="password" name="" id="password" className="bg-[#64748B] text-white py-2 px-4 rounded-md mb-4" />
-                <button className='bg-green-500 text-white font-semibold py-3 px-6 w-full rounded-md opacity-85 hover:opacity-100'>Log in</button>
+                <button className='bg-green-500 text-white font-semibold py-2 px-4 w-full rounded-md opacity-85 hover:opacity-100'>Log in</button>
               </form>
               <span className='text-white hover:text-green-500 block text-center mt-4'> <Link to="/register">New here? Click to register.</Link></span>
             </div>
