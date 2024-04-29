@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import authBG from "../../assets/Auth-BG-3.jpg";
 import Header from '../Layout/Header';
@@ -15,6 +15,7 @@ const Register = () => {
   const [isRegistered, setIsRegistered] = useState(false);
   const [statusCode, setStatusCode] = useState();
   const [imageFormData, setimageFormData] = useState("")
+  const navigateTo = useNavigate()
   // Error States
   const [usernameError, setUsernameError] = useState();
   const [emailError, setEmailError] = useState();
@@ -33,6 +34,7 @@ const Register = () => {
           setIsRegistered(true);
           setStatusCode(res.status);
           setLoading(false)
+          navigateTo("/")
         })
         .catch(err => {
           if (err.response.data.message.code === 11000) {

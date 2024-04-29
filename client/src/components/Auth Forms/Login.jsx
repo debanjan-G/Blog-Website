@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import authBG from "../../assets/Auth-BG-3.jpg";
 import Header from '../Layout/Header';
 import axios from 'axios';
@@ -14,6 +14,7 @@ const Login = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [statusCode, setStatusCode] = useState();
   const [error, setError] = useState(false);
+  const navigateTo = useNavigate()
 
   useEffect(() => {
     // Check if userInput has data before making the request
@@ -25,6 +26,7 @@ const Login = () => {
           localStorage.setItem("jwt", token);
           setIsLoggedIn(true);
           setStatusCode(res.status);
+          navigateTo("/")
         })
         .catch(err => {
           setError(true);
