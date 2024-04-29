@@ -1,38 +1,71 @@
-const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs')
+import mongoose from "mongoose";
+import validator from "validator";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken"
+const userSchema = new mongoose.Schema({
+    name:{
+        type:String,
+        required: true,
+        minLenght:[3, "Name Must Content At least 3 characters"],
+        maxLenght:[32, "Name Must Content max 32 characters"],
+    },
+    email:{
+        type:String,
+        required: true,
+        validate: [validator.isEmail, "Please provide a valid emaill !"],
+    },
+    phone:{
+        type:Number,
+        required: true,
+    },
+    avatar:{
+        public_id:{
+            type:String,
+            required:true,
+        },
+        url:{
+            type:String,
+            required:true,
+        },
 
-const UserSchema = new mongoose.Schema({
-  username: {
-    type: String,
-    required: [true, "Kindly provide an username"],
-    unique: true,
-    maxlength: 20,
-    minlength:3,
-  },
-  email: {
-    type: String,
-    required: [true, "Kindly provide an email"],
-    unique: true,
-    maxlength: 30,
-    match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address']
-  },
-  password: {
-    type: String,
-    required: [true, "Kindly provide a password to secure your profile"],
-    minlength: 5
-  },
-  dp:{
-    type:String,
-    required:[true,"Please provide a Profile Picture"]
-  }
-}, { timestamps: true });
+    },
+    education:{
+        type:String,
+        required: true,
+    },
+    password:{
+        type:String,
+        required: true,
+        minLenght:[6, "Password Must Content At least 3 characters"],
+        maxLenght:[32, "Password Must Content max 32 characters"],
+        select: false,
+    },
+    createdOn:{
+        type:String,
+        default: Date.now,
 
-// Mongoose middleware for hashing password
-UserSchema.pre('save',async function(){
-const salt = 10;
-this.password =  await bcrypt.hash(this.password,salt)
-})
+    }
+});
 
-const User = mongoose.model("User", UserSchema);
+userSchema.pre("save", async function(){
+    if(!this.isModified("password")){
+        next()
+    }
+    this.password=await bcrypt.hash(this.password,10)
+});
 
-module.exports = User;
+
+
+userSchema.methods.comparePassword= async function(enteredPassword){
+    return await bcrypt.compare(enteredPassword, this.password);
+};
+
+userSchema.methods.getJWTToken =  function(){
+
+    return jwt.sign({is: this._id}, process.env.JWT_SECRET_KEY,{
+        expiresIn: process.env.JWT_EXPIRES,
+    });
+
+};
+
+export const User= mongoose.model("User", userSchema);
