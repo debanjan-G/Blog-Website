@@ -13,7 +13,7 @@ const PostSchema = new mongoose.Schema({
     },
     content: {
         type: String,
-        maxlength: 5000,
+        maxlength: 50000,
         required: [true, "Kindly provide the content for the blog "],
     },
     imageURL: {
