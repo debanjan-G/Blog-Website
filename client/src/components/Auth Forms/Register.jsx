@@ -130,7 +130,7 @@ const Register = () => {
                 <label className='text-[#DBEAFE]'>Profile Picture</label>
                 <input type="file" onChange={handleDPChange} id="file" name="dp" className='bg-slate-200 p-2' />
                 {loading ?
-                  <span className='text-center'><Loader /></span>
+                  <span className='text-center my-2 text-4xl'><Loader /></span>
                   :
                   <button className='bg-green-500 text-white font-semibold py-3 px-6 w-full rounded-md opacity-85 hover:opacity-100'>Sign up</button>
                 }

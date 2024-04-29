@@ -19,7 +19,6 @@ const PostSchema = new mongoose.Schema({
     imageURL: {
         type: String,
         required: [true, "Kindly provide an Image URL for the blog "],
-        match: [/^(https?:\/\/.*\.(?:png|jpg|jpeg|gif|webp|avif))$/, "Kindly enter a valid image URL"]
     },
     author: {
         type: mongoose.Schema.Types.ObjectId,
