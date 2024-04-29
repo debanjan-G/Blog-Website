@@ -1,9 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import authBG from "../../assets/Auth-BG-3.jpg";
 import Header from '../Layout/Header';
 import Profile from '../Layout/Profile';
+import Loader from '../Utils/Loader';
+
 
 const Register = () => {
   const [userInput, setUserInput] = useState({});
@@ -12,20 +14,25 @@ const Register = () => {
   const passwordRef = useRef();
   const [isRegistered, setIsRegistered] = useState(false);
   const [statusCode, setStatusCode] = useState();
+  const [imageFormData, setimageFormData] = useState("")
   // Error States
   const [usernameError, setUsernameError] = useState();
   const [emailError, setEmailError] = useState();
   const [passwordError, setPasswordError] = useState();
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
+
     // Check if userInput has data before making the request
     if (Object.keys(userInput).length > 0) {
+      setLoading(true)
       axios.post("/api/v1/auth/register", userInput)
         .then(res => {
           const token = res.data.token;
           localStorage.setItem("jwt", token);
           setIsRegistered(true);
           setStatusCode(res.status);
+          setLoading(false)
         })
         .catch(err => {
           if (err.response.data.message.code === 11000) {
@@ -51,9 +58,14 @@ const Register = () => {
           }
         });
     }
+    // return () => {
+    //   setLoading(false)
+    // }
+
   }, [userInput]);
 
-  const submitHandler = (event) => {
+  const submitHandler = async (event) => {
+    setLoading(true)
     setEmailError(null);
     setUsernameError(null);
     setPasswordError(null);
@@ -61,12 +73,38 @@ const Register = () => {
     const username = usernameRef.current.value;
     const password = passwordRef.current.value;
     const email = emailRef.current.value;
+
+    const response = await uploadImage()
+    console.log(response);
+
     setUserInput({
       username,
       email,
-      password
+      password,
+      dp: response.data.imagePath
     });
+    setLoading(false)
   };
+
+
+  // onChange handler of input:file
+  const handleDPChange = (e) => {
+    const imageFile = e.target.files[0]
+    console.log("State updated", e.target.files[0]);
+    const formData = new FormData()
+    formData.append('dp', imageFile)
+    setimageFormData(formData)
+  }
+
+  const uploadImage = () => {
+
+    // Sending the image to our server
+    const headers = {
+      'Content-Type': 'multipart/form-data'
+    }
+
+    return axios.post("/api/v1/auth/register/upload", imageFormData, { headers })
+  }
 
   return (
     <>
@@ -88,9 +126,18 @@ const Register = () => {
                 <label className='text-[#DBEAFE]'>Password</label>
                 {passwordError && <p className='text-red-500 text-md'>{passwordError}</p>}
                 <input required ref={passwordRef} type="password" name="" id="password" className="bg-[#64748B] text-white py-2 px-4 rounded-md" />
-                <button className='bg-green-500 text-white font-semibold py-3 px-6 w-full rounded-md opacity-85 hover:opacity-100'>Sign up</button>
+
+                <label className='text-[#DBEAFE]'>Profile Picture</label>
+                <input type="file" onChange={handleDPChange} id="file" name="dp" className='bg-slate-200 p-2' />
+                {loading ?
+                  <span className='text-center'><Loader /></span>
+                  :
+                  <button className='bg-green-500 text-white font-semibold py-3 px-6 w-full rounded-md opacity-85 hover:opacity-100'>Sign up</button>
+                }
+
               </form>
-              <span className='text-white hover:text-green-500'><Link to="/login">If you already have an account, you can log in here.</Link></span>
+              <span className='text-slate-100 hover:text-green-500'><Link to="/login">If you already have an account, you can log in here.</Link></span>
+
             </div>
           </div>
         </>

@@ -5,11 +5,12 @@ const bcrypt = require('bcryptjs')
 const { NotFoundError, UnauthorizedError } = require("../errors")
 
 const registerUser =async (req,res)=>{
-    const {username,email} = req.body
+    console.log(req.body);
+    const {username,email,dp} = req.body
     const user = new User({...req.body})
     await user.save()
 
-const token = jwt.sign({id:user._id,username,email},process.env.JWT_SECRET,{expiresIn:'2d'}   )
+const token = jwt.sign({id:user._id,username,email,dp},process.env.JWT_SECRET,{expiresIn:'2d'}   )
  
 res.status(StatusCodes.CREATED).json({success:true,createdUser:user,token})
 
@@ -34,6 +35,3 @@ res.status(StatusCodes.OK).json({success:true,user,token})
 
 module.exports = {registerUser,loginUser}
 
-/**
-
- */

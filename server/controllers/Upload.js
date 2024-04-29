@@ -4,6 +4,7 @@ const cloudinary =require('cloudinary').v2
 const fs = require('fs')
 
 const profilePictureUpload = async(req,res) =>{
+    console.log(req.files);
     //Getting hold of the image
     const {dp} = req.files;
     //performing checks

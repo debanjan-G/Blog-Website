@@ -41,7 +41,7 @@ const Profile = ({ statusCode }) => {
     welcomeMsg = "Congratulations! 🎉 You're officially part of our blog community. Let the reading adventures begin!";
   }
 
-  const { username, email } = decoded;
+  const { username, email, dp } = decoded;
 
   return (
     <div className=''>
@@ -62,7 +62,7 @@ const Profile = ({ statusCode }) => {
         </div>
         {!posts.length > 0 &&
           <>
-            <img src={ProfileWelcomeImg} alt="" className='object-contain h-80 my-5 rounded-xl' />
+            <img src={dp} alt="DP" className='object-cover h-52 my-5 rounded-xl' />
 
             <p className='text-slate-700 text-2xl text-center'>{welcomeMsg}</p>
 

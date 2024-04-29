@@ -1,10 +1,6 @@
-// import Landing from "./components/Layout/Landing";
 import "./App.css";
-// import Navbar from "./components/Layout/Navbar";
 import Blogs from "./components/Blog/Blogs"
-// import Blog from "./components/Blog/Blog";
 import Contact from "./components/Blog Forms/Contact";
-// import Footer from "./components/Layout/Footer";
 import Footer from "./components/Layout/Footer";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/Layout/Home";
@@ -18,6 +14,7 @@ import CreateBlogForm from "./components/Blog Forms/CreateBlogForm";
 import DeleteSuccessful from "./components/Action Response/DeleteSuccessful";
 import EditBlogForm from "./components/Blog Forms/EditBlogForm";
 import SuccessfulBlogEdit from "./components/Action Response/SuccessfulBlogEdit";
+
 
 function App() {
 

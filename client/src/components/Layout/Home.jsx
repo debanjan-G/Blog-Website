@@ -4,6 +4,7 @@ import Blogs from '../Blog/Blogs';
 import Contact from "../Blog Forms/Contact";
 import SearchBar from './SearchBar';
 
+
 const Home = () => {
   return (
     <>
