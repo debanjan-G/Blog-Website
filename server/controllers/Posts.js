@@ -58,12 +58,18 @@ const deletePost = async (req, res) => {
 
 const likePost = async (req, res) => {
     const postId = req.params.id
+    const userId = req.user.id
+    console.log(userId)
     try {
         const post = await Post.findById(postId)
         if (!post) {
             throw new NotFoundError("Post not found")
         }
+        if (post.likedBy.includes(userId)) {
+            return res.status(StatusCodes.BAD_REQUEST).json({ error: "You have already liked this post" });
+        }
         post.likes += 1;
+        post.likedBy.push(userId);
 
         await post.save()
 
