@@ -2,14 +2,20 @@
 import { Link } from 'react-router-dom';
 import Button from '../Utils/Button';
 import { useEffect, useState } from 'react';
+import { jwtDecode } from 'jwt-decode'
 
 const Navbar = () => {
 
   const [loggedIn, setLoggedIn] = useState(false)
+  const [dp, setDP] = useState("")
+
+  const token = localStorage.getItem("jwt")
 
   useEffect(() => {
-    if (localStorage.getItem("jwt")) {
+    if (token) {
       setLoggedIn(true)
+      const decoded = jwtDecode(token)
+      setDP(decoded.dp)
     }
   }, [])
 
@@ -39,7 +45,8 @@ const Navbar = () => {
         <Link to="/contact" className='hover:text-green-700 text-lg' onClick={(e) => handleAnchorTagClick(e, 'contact')}>Contact</Link>
         {/* <Link to={profileRoute} className='hover:text-green-700 text-lg'>Profile</Link> */}
         {loggedIn ? <Link to="/profile">
-          <Button >Dashboard</Button>
+          <img src={dp} className='h-12 rounded-full hover:scale-105 transition' alt="" />
+          {/* <Button >Dashboard</Button> */}
         </Link> : <Link to="/login">
           <Button >Log In</Button>
         </Link>}

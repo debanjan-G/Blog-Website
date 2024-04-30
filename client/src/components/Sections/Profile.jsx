@@ -11,7 +11,6 @@ const Profile = ({ statusCode }) => {
   const [posts, setPosts] = useState([]);
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
-  // const { refetchPosts } = useLocation().state || false
   const { refetchPosts = false } = useLocation().state || {};
 
 
@@ -48,7 +47,7 @@ const Profile = ({ statusCode }) => {
   const { username, email, dp } = decoded;
 
   return (
-    <div className=''>
+    <div className='pb-10'>
       <div className='flex justify-between items-center m-2 '>
         <Header />
         <button className='bg-slate-900 h-full py-3 px-10 opacity-90 text-white font-bold hover:opacity-100' onClick={handleLogout}>
@@ -57,19 +56,21 @@ const Profile = ({ statusCode }) => {
       </div>
 
       <div className=' flex flex-col items-center h-screen w-1/2 mx-auto justify-center'>
-        <h1 className="text-7xl text-center font-bold my-6 anton-regular bg-gradient-to-r from-rose-500 via-red-600 to-red-800 bg-clip-text text-transparent">
-          Its good to have you back, {username}
+        <h1 className="text-7xl text-slate-800  text-center font-bold my-6 anton-regular ">
+          {username}
         </h1>
-        <div className="flex gap-2">
-          <p className='text-slate-600 border-2 p-4 rounded-md'>{email}</p>
-          {posts.length > 0 ? <p className='text-slate-600 border-2 p-4 rounded-md'>Blogs written: {posts.length}</p> : <p className='text-slate-600 border-2 p-4 rounded-md'>{message}</p>}
-        </div>
+        <p className='text-slate-600 rounded-md'>{email}</p>
         {!posts.length > 0 &&
           <>
-            <img src={dp} alt="DP" className='object-cover h-52 my-5 rounded-xl' />
+            <img src={dp} alt="DP" className='object-cover h-52 my-5 rounded-full' />
             <p className='text-slate-700 text-2xl text-center'>{welcomeMsg}</p>
+
           </>
         }
+        {posts.length > 0 ?
+          <p className='text-slate-600 border-2 p-4 my-4 shadow-lg rounded-md'>Blogs written: {posts.length}</p> :
+          <p className='text-slate-600 border-2 p-4 my-4 shadow-lg rounded-md'>{message}</p>}
+
         <button className='bg-slate-900 py-4 px-10 opacity-90 text-white font-bold hover:opacity-100 my-4 text-lg' onClick={() => { navigate("/create-blog") }}>
           Compose New Blog
         </button>

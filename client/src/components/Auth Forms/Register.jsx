@@ -23,7 +23,9 @@ const Register = () => {
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-
+    // if (emailError || passwordError || usernameError) {
+    //   setLoading(false)
+    // }
     // Check if userInput has data before making the request
     if (Object.keys(userInput).length > 0) {
       setLoading(true)
@@ -34,7 +36,7 @@ const Register = () => {
           setIsRegistered(true);
           setStatusCode(res.status);
           setLoading(false)
-          navigateTo("/")
+          navigateTo("/login-true")
         })
         .catch(err => {
           if (err.response.data.message.code === 11000) {
@@ -60,9 +62,6 @@ const Register = () => {
           }
         });
     }
-    // return () => {
-    //   setLoading(false)
-    // }
 
   }, [userInput]);
 
@@ -131,7 +130,7 @@ const Register = () => {
 
                 <label className='text-[#DBEAFE]'>Profile Picture</label>
                 <input type="file" onChange={handleDPChange} id="file" name="dp" className='bg-slate-200 p-2' />
-                {loading ?
+                {(loading && !usernameError && !passwordError && !emailError) ?
                   <span className='text-center my-2 text-4xl'><Loader /></span>
                   :
                   <button className='bg-green-500 text-white font-semibold py-3 px-6 w-full rounded-md opacity-85 hover:opacity-100'>Sign up</button>
