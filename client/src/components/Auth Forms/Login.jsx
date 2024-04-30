@@ -26,7 +26,7 @@ const Login = () => {
           localStorage.setItem("jwt", token);
           setIsLoggedIn(true);
           setStatusCode(res.status);
-          navigateTo("/login-true")
+          navigateTo("/auth-done", { state: { action: "Login" } })
         })
         .catch(err => {
           setError(true);

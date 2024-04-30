@@ -14,7 +14,7 @@ import CreateBlogForm from "./components/Blog Forms/CreateBlogForm";
 import DeleteSuccessful from "./components/Action Response/DeleteSuccessful";
 import EditBlogForm from "./components/Blog Forms/EditBlogForm";
 import SuccessfulBlogEdit from "./components/Action Response/SuccessfulBlogEdit";
-import LoginSuccess from "./components/Action Response/LoginSuccess";
+import AuthSuccess from "./components/Action Response/AuthSuccess";
 
 
 function App() {
@@ -30,7 +30,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/contact-form" element={<ContactForm />} />
-          <Route path="/login-true" element={<LoginSuccess />} />
+          <Route path="/auth-done" element={<AuthSuccess />} />
           <Route path="/profile"  >
             <Route path="" element={<Profile />} />
             <Route path="deleted" element={<DeleteSuccessful />} />

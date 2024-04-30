@@ -36,7 +36,7 @@ const Register = () => {
           setIsRegistered(true);
           setStatusCode(res.status);
           setLoading(false)
-          navigateTo("/login-true")
+          navigateTo("/auth-done", { state: { action: "Registration" } })
         })
         .catch(err => {
           if (err.response.data.message.code === 11000) {
