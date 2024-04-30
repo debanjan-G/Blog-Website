@@ -2,12 +2,6 @@ const { StatusCodes } = require("http-status-codes")
 const Post = require("../models/Post")
 const { NotFoundError } = require("../errors")
 
-// const getPosts = async(req,res) =>{
-
-//     const posts = await Post.find({})
-//     res.status(StatusCodes.OK).json({success:true,PostCount:posts.length,posts})
-// }
-
 
 const createPost = async (req, res) => {
 
@@ -20,20 +14,7 @@ const createPost = async (req, res) => {
     res.status(StatusCodes.CREATED).json({ success: true, post })
 
 }
-
-
-// const getAPost = async(req,res) =>{
-
-//     const postID = req.params.id;
-//     const post = await Post.findById(postID)
-//     if(!post){
-//         throw new NotFoundError("Post Not Found")
-//     }
-//     res.status(StatusCodes.OK).json({success:true,post})
-// }
-
-const updatePost = async (req, res) => {
-
+const updatePost = async(req,res) =>{
     const postID = req.params.id;
     const updatedPost = await Post.findByIdAndUpdate(postID, { ...req.body }, { new: true, runValidators: true })
 

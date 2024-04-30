@@ -9,7 +9,7 @@ const Blogs = () => {
 
   useEffect(() => {
     axios.get("/api/v1/posts").then(res => {
-      console.log(res);
+      console.log(res.data.posts);
       setPosts([...res.data.posts])
     }).catch(err => {
       console.log(err);
@@ -28,8 +28,8 @@ const Blogs = () => {
   return (
 
     <div className='text-slate-700 w-full mx-auto my-10' id='blogs'>
-      <h1 className='bg-gradient-to-r from-blue-800 via-violet-600 to-indigo-900 bg-clip-text text-transparent text-6xl anton-regular font-semibold text-center my-5'>Recent Blogs</h1>
-      <div className="blogs flex items-center flex-col md:flex-row md:flex-wrap md:justify-center  ">
+      <h1 className=' text-6xl advent-pro-medium font-bold text-center my-5'>Recent Blogs</h1>
+      <div className="blogs flex items-center flex-col">
         {posts.map((post) => (
           <Blog
             key={post._id}
@@ -38,6 +38,8 @@ const Blogs = () => {
             intro={post.intro}
             tags={post.tags}
             img={post.imageURL}
+            author={post.author}
+            createdAt={post.createdAt}
           />
         ))}
       </div>

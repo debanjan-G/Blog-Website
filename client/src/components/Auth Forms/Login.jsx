@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import authBG from "../../assets/Auth-BG-3.jpg";
 import Header from '../Layout/Header';
 import axios from 'axios';
-import Profile from '../Layout/Profile';
+import Profile from '../Sections/Profile';
 import FailedAuth from '../Action Response/FailedAuth';
 
 const Login = () => {
@@ -14,6 +14,7 @@ const Login = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [statusCode, setStatusCode] = useState();
   const [error, setError] = useState(false);
+  const navigateTo = useNavigate()
 
   useEffect(() => {
     // Check if userInput has data before making the request
@@ -25,6 +26,7 @@ const Login = () => {
           localStorage.setItem("jwt", token);
           setIsLoggedIn(true);
           setStatusCode(res.status);
+          navigateTo("/login-true")
         })
         .catch(err => {
           setError(true);
@@ -53,7 +55,7 @@ const Login = () => {
     <>
       {isLoggedIn ? <Profile statusCode={statusCode} /> :
         <>
-          <div className='bg-cover h-[88vh]  pb-10' style={{ backgroundImage: `url(${authBG})` }}>
+          <div className='bg-cover h-full  pb-10' style={{ backgroundImage: `url(${authBG})` }}>
             <Header />
             <div className='flex  items-center justify-center mx-1/2 w-full'></div>
             <div className='bg-slate-900 w-1/3 mx-auto p-10 rounded-lg'>
@@ -65,7 +67,7 @@ const Login = () => {
                 <input required ref={emailRef} type="email" name="" id="email" className="bg-[#64748B] text-white py-2 px-4 rounded-md" />
                 <label className='text-[#DBEAFE]'>Password</label>
                 <input required ref={passwordRef} type="password" name="" id="password" className="bg-[#64748B] text-white py-2 px-4 rounded-md mb-4" />
-                <button className='bg-green-500 text-white font-semibold py-3 px-6 w-full rounded-md opacity-85 hover:opacity-100'>Log in</button>
+                <button className='bg-green-500 text-white font-semibold py-2 px-4 w-full rounded-md opacity-85 hover:opacity-100'>Log in</button>
               </form>
               <span className='text-white hover:text-green-500 block text-center mt-4'> <Link to="/register">New here? Click to register.</Link></span>
             </div>

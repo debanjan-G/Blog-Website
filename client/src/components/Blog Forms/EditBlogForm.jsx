@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { useState } from 'react';
 import Header from '../Layout/Header';
 import axios from 'axios';
@@ -7,7 +6,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 const EditBlogForm = () => {
     const location = useLocation();
     const { id, title, intro, content, img, tags } = location.state;
-    const navigateTo = useNavigate()
+    const navigateTo = useNavigate();
 
     const [userInput, setUserInput] = useState({
         title: title,
@@ -17,109 +16,106 @@ const EditBlogForm = () => {
         tags: tags,
     });
 
-
     const handleInputChange = (e) => {
-        console.log(e.target);
         const { name, value } = e.target;
         if (name === "tags") {
-            setUserInput(prevInput => ({ ...prevInput, tags: value.split(',') }))
+            setUserInput(prevInput => ({ ...prevInput, tags: value.split(',') }));
         } else {
-            setUserInput(prevInput => ({
-                ...prevInput,
-                [name]: value,
-            }));
+            setUserInput(prevInput => ({ ...prevInput, [name]: value }));
         }
-
     };
 
-    const token = localStorage.getItem("jwt")
+    const token = localStorage.getItem("jwt");
 
     const headers = {
         'Authorization': `Bearer ${token}`
-    }
+    };
 
     const editBlog = (e) => {
-        e.preventDefault()
+        e.preventDefault();
         axios.patch(`/api/v1/posts/${id}`, { ...userInput }, { headers }).then(res => {
-            console.log(res);
             if (res.status === 200) {
-                navigateTo("/profile/edited")
+                navigateTo("/profile/edited");
             }
-        }).catch(err => console.log(err))
-    }
-
-
-
-
+        }).catch(err => console.log(err));
+    };
 
     return (
-        <div className=' bg-gradient-to-l from-neutral-50 via-violet-600 to-slate-800 py-2 px-4 bg-center h-full '>
+        <div className='bg-slate-200 h-full'>
             <Header />
-            <h1 className='text-6xl text-[#EEEEEE] font-bold  text-center my-5 '>EDIT BLOG</h1>
-            <form onSubmit={editBlog} className='bg-[#222831] flex flex-col gap-2 py-6 my-5 rounded-lg px-10 w-3/4  mx-auto '>
-                <label className='text-xl text-[#EEEEEE]'>Title</label>
-                <input
-                    value={userInput.title}
-                    onChange={handleInputChange}
-                    required
-                    className='rounded-lg text-2xl text-[#222831] font-semibold bg-[#EEEEEE] py-2 px-4 w-full'
-                    type='text'
-                    name='title'
-                    id='title'
-                />
+            <div className="flex flex-col justify-between h-full">
+                <div className="py-5 px-10">
+                    <h1 className='text-6xl text-slate-800 font-bold text-center my-5'>Edit Blog</h1>
+                    <form onSubmit={editBlog} className='shadow-lg bg-white flex flex-col justify-center gap-2 py-6 px-10 w-3/4 mx-auto mb-8'>
+                        <label className='font-semibold text-xl text-slate-800'>Title</label>
+                        <input
+                            value={userInput.title}
+                            onChange={handleInputChange}
+                            required
+                            className='text-lg text-[#222831] bg-slate-100 p-3 w-full rounded-lg'
+                            type='text'
+                            name='title'
+                            id='title'
+                            placeholder='Enter the title of your post'
+                        />
 
-                <label className='text-xl text-[#EEEEEE]'>Intro</label>
-                <input
-                    value={userInput.intro}
-                    onChange={handleInputChange}
-                    required
-                    className='rounded-lg text-2xl text-[#222831] font-semibold bg-[#EEEEEE] py-2 px-4 w-full'
-                    type='text'
-                    name='intro'
-                    id='intro'
-                />
+                        <label className='font-semibold text-xl text-slate-800'>Intro</label>
+                        <input
+                            value={userInput.intro}
+                            onChange={handleInputChange}
+                            required
+                            className='text-lg text-[#222831] bg-slate-100 p-3 w-full rounded-lg'
+                            type='text'
+                            name='intro'
+                            id='intro'
+                            placeholder='Write a brief introduction for your post'
+                        />
 
-                <label className='text-xl text-[#EEEEEE]'>Content</label>
-                <textarea
-                    value={userInput.content}
-                    onChange={handleInputChange}
-                    required
-                    className='rounded-lg text-2xl text-[#222831] font-semibold bg-[#EEEEEE] py-2 px-4 w-full resize-none'
-                    name='content'
-                    id='content'
-                    rows='10'
-                />
+                        <label className='font-semibold text-xl text-slate-800'>Content</label>
+                        <textarea
+                            value={userInput.content}
+                            onChange={handleInputChange}
+                            required
+                            className='text-lg text-[#222831] bg-slate-100 p-3 w-full resize-none rounded-lg'
+                            name='content'
+                            id='content'
+                            rows='10'
+                            placeholder='Compose your post content'
+                        />
 
-                <label className='text-xl text-[#EEEEEE]'>Tags</label>
-                <input
-                    value={userInput.tags}
-                    onChange={handleInputChange}
-                    className='rounded-lg text-2xl text-[#222831] font-semibold bg-[#EEEEEE] py-2 px-4 w-full'
-                    type='text'
-                    name='tags'
-                    id='tags'
-                    placeholder='Enter tags (comma-separated)'
-                />
+                        <label className='font-semibold text-xl text-slate-800'>Tags</label>
+                        <input
+                            value={userInput.tags}
+                            onChange={handleInputChange}
+                            className='text-lg text-[#222831] bg-slate-100 p-3 w-full rounded-lg'
+                            type='text'
+                            name='tags'
+                            id='tags'
+                            placeholder='Enter tags (comma-separated)'
+                        />
 
-                <label className='text-xl text-[#EEEEEE]'>ImageURL</label>
-                <input
-                    value={userInput.img}
-                    onChange={handleInputChange}
-                    required
-                    className='rounded-lg text-2xl text-[#222831] font-semibold bg-[#EEEEEE] py-2 px-4 w-full'
-                    type='text'
-                    name='img'
-                    id='image'
-                />
+                        <label className='font-semibold text-xl text-slate-800'>Image URL</label>
+                        <input
+                            value={userInput.img}
+                            onChange={handleInputChange}
+                            required
+                            className='text-lg text-[#222831] bg-slate-100 p-3 w-full rounded-lg'
+                            type='text'
+                            name='img'
+                            id='image'
+                            placeholder='Enter the image URL for your post'
+                        />
 
-                <button
-                    type='submit'
-                    className='my-4 w-1/4 mx-auto mb-10 bg-[#00ADB5] py-4 px-10 opacity-90 text-white text-2xl font-bold hover:opacity-100'
+                        <button
+                            type='submit'
+                            className='my-4 w-1/4 mx-auto bg-slate-800 p-3 text-white text-lg font-bold rounded-lg hover:opacity-90'
+                        >
+                            Edit Blog
+                        </button>
+                    </form>
+                </div>
 
-                >
-                    Edit Blog
-                </button>
-            </form>
+            </div>
         </div>
     );
 };

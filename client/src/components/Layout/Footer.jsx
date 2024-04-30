@@ -8,7 +8,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear()
   return (
 
-    <div id='footer' className='relative bottom-0  w-full bg-black p-5 flex flex-col items-center justify-center'>
+    <div id='footer' className='relative bottom-0  w-full bg-black p-2 flex flex-col items-center justify-center'>
       <div className="icons flex gap-4 text-xl my-4">
         <FaSquareXTwitter className='text-white hover:text-green-600 hover:cursor-pointer' />
         <FaLinkedin className='text-white hover:text-green-600 hover:cursor-pointer' />
