@@ -28,6 +28,17 @@ const PostSchema = new mongoose.Schema({
     tags: {
         type: [String],
         required: [true, "Kindly provide some tags related to your blog"],
+        maxlength: 15,
+    },
+    likes: {
+        type: Number,
+        default: 0
+    },
+    likedBy: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }]
+}
         maxlength: 15
     }
 }, { timestamps: true });
