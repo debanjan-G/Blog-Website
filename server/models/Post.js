@@ -26,10 +26,14 @@ const PostSchema = new mongoose.Schema({
         ref: 'User',
         required: [true, "Please provide author name"]
     },
-    tags:{
+    tags: {
         type: [String],
-        required:[true,"Kindly provide some tags related to your blog"],
-        maxlength:15,
+        required: [true, "Kindly provide some tags related to your blog"],
+        maxlength: 15,
+    },
+    likes: {
+        type: Number,
+        default: 0
     }
 }
 
