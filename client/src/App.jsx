@@ -1,5 +1,7 @@
 import "./App.css";
-import Blogs from "./components/Blog/Blogs"
+// import Navbar from "./components/Layout/Navbar";
+import Blogs from "./components/Blog/Blogs";
+// import Blog from "./components/Blog/Blog";
 import Contact from "./components/Blog Forms/Contact";
 import Footer from "./components/Layout/Footer";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -18,10 +20,9 @@ import AuthSuccess from "./components/Action Response/AuthSuccess";
 
 
 function App() {
-
   return (
     <Router>
-      <  ScrollToTop />
+      <ScrollToTop />
       <div className="titillium-web-regular">
         <Routes>
           <Route path="/" element={<Home />} />
