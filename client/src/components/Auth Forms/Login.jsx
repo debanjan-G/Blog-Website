@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import authBG from "../../assets/Auth-BG-3.jpg";
 import Header from '../Layout/Header';
 import axios from 'axios';
-import Profile from '../Layout/Profile';
+import Profile from '../Sections/Profile';
 import FailedAuth from '../Action Response/FailedAuth';
 
 const Login = () => {
@@ -26,7 +26,7 @@ const Login = () => {
           localStorage.setItem("jwt", token);
           setIsLoggedIn(true);
           setStatusCode(res.status);
-          navigateTo("/")
+          navigateTo("/login-true")
         })
         .catch(err => {
           setError(true);

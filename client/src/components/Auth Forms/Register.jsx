@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import authBG from "../../assets/Auth-BG-3.jpg";
 import Header from '../Layout/Header';
-import Profile from '../Layout/Profile';
+import Profile from '../Sections/Profile';
 import Loader from '../Utils/Loader';
 
 

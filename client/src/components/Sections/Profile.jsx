@@ -1,9 +1,8 @@
 /* eslint-disable react/jsx-key */
 /* eslint-disable react/prop-types */
-import React, { useEffect, useState } from 'react';
-import Header from './Header';
+import { useEffect, useState } from 'react';
+import Header from '../Layout/Header';
 import { jwtDecode } from 'jwt-decode';
-import ProfileWelcomeImg from "../../assets/Profile-welcome.png";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Blog from '../Blog/Blog';
@@ -17,7 +16,7 @@ const Profile = ({ statusCode }) => {
   console.log(decoded.id);
 
   useEffect(() => {
-    axios.get(`/api/v1/profile/${decoded.id}`).then(res => {
+    axios.get(`/api/v1/profile/${decoded.id}/posts`).then(res => {
       // console.log(res);
       if (res.data.posts.length === 0) {
         setMessage(res.data.message);
@@ -84,6 +83,8 @@ const Profile = ({ statusCode }) => {
                 content={post.content}
                 tags={post.tags}
                 img={post.imageURL}
+                author={post.author}
+                createdAt={post.createdAt}
                 isLoggedIn={true}
               />
             ))}

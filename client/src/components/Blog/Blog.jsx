@@ -4,12 +4,28 @@ import { useNavigate } from 'react-router-dom'
 import { FaRegEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import axios from "axios"
+import { useEffect, useState } from 'react';
 
 
-const Blog = ({ id, title, intro, content, img, tags, isLoggedIn }) => {
+const Blog = ({ id, title, intro, content, img, tags, isLoggedIn, author, createdAt }) => {
+
+  const [username, setUsername] = useState('')
+  const navigateTo = useNavigate()
+
+  useEffect(() => {
+    axios.get(`/api/v1/profile/${author}`).then(res => {
+
+      setUsername(res.data.user.username)
+    }).catch(err =>
+      console.log(err))
+  }, [])
+
+  const originalDate = new Date(createdAt)
+  const options = { year: "numeric", month: "long", day: "numeric" };
+  const formattedDate = originalDate.toLocaleString("en-US", options);
 
   // const [toEdit, setToEdit] = useState(false)
-  const navigateTo = useNavigate()
+
   const token = localStorage.getItem("jwt")
 
   const headers = {
@@ -33,9 +49,11 @@ const Blog = ({ id, title, intro, content, img, tags, isLoggedIn }) => {
     }).catch(err => console.log(err));
   }
 
-  const navigate = useNavigate()
-  const handleClick = () => {
-    navigate(`/blog/${id}`)
+
+
+  const handleImageClick = () => {
+    console.log(username, formattedDate);
+    navigateTo(`/blog/${id}`, { state: { username, formattedDate } })
   }
 
 
@@ -46,7 +64,7 @@ const Blog = ({ id, title, intro, content, img, tags, isLoggedIn }) => {
 
         <LazyLoad>
           <div className='flex flex-col items-center justify-center'>
-            <img src={img} alt="" className='h-52 object-cover rounded-lg hover:cursor-pointer hover:scale-105 transition my-4' onClick={handleClick} />
+            <img src={img} alt="" className='h-52 object-cover rounded-lg hover:cursor-pointer hover:scale-105 transition my-4' onClick={handleImageClick} />
             {isLoggedIn &&
               <div key={id} className="flex gap-4 my-1">
                 <FaRegEdit onClick={handleEditClick} className='text-3xl hover:text-green-600 hover:cursor-pointer' />
@@ -57,7 +75,10 @@ const Blog = ({ id, title, intro, content, img, tags, isLoggedIn }) => {
         </LazyLoad>
 
         <div className="flex flex-col w-1/3">
+          <p className='text-slate-800 text-center my-2'> {username} • {formattedDate}</p>
           <h1 className='text-2xl font-semibold text-center'>{title}</h1>
+
+
           <div className="flex  gap-2 flex-wrap justify-center" >
             {tags && tags.map((tag, index) => <p key={index} className='text-sm font-semibold text-center my-1 bg-sky-400 text-slate-800 p-2 rounded-lg'>{tag}</p>)}
           </div>
@@ -66,6 +87,7 @@ const Blog = ({ id, title, intro, content, img, tags, isLoggedIn }) => {
         </div>
         <hr className='bg-red-500' />
       </div >
+      <hr />
     </>
 
   )
