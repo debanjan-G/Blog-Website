@@ -3,13 +3,18 @@
 import { useEffect, useState } from 'react';
 import Header from '../Layout/Header';
 import { jwtDecode } from 'jwt-decode';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Blog from '../Blog/Blog';
 
 const Profile = ({ statusCode }) => {
   const [posts, setPosts] = useState([]);
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
+  // const { refetchPosts } = useLocation().state || false
+  const { refetchPosts = false } = useLocation().state || {};
+
+
 
   const token = localStorage.getItem("jwt");
   const decoded = jwtDecode(token);
@@ -23,9 +28,9 @@ const Profile = ({ statusCode }) => {
       }
       setPosts([...res.data.posts]);
     }).catch(err => console.log(err));
-  }, []);
+  }, [refetchPosts]);
 
-  const navigate = useNavigate();
+
 
   const handleLogout = () => {
     localStorage.removeItem("jwt");

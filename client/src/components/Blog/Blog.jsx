@@ -12,9 +12,11 @@ const Blog = ({ id, title, intro, content, img, tags, isLoggedIn, author, create
   const [username, setUsername] = useState('')
   const navigateTo = useNavigate()
 
+
+
+
   useEffect(() => {
     axios.get(`/api/v1/profile/${author}`).then(res => {
-
       setUsername(res.data.user.username)
     }).catch(err =>
       console.log(err))
@@ -35,17 +37,14 @@ const Blog = ({ id, title, intro, content, img, tags, isLoggedIn, author, create
   const handleEditClick = () => {
     // setToEdit(true)
     navigateTo("/profile/edit", { state: { id, title, intro, content, img, tags } })
-    console.log("Editing blog...");
+
   }
 
 
   const handleDeleteClick = () => {
     axios.delete(`/api/v1/posts/${id}`, { headers }).then(res => {
       console.log(res);
-      if (res.status === 200) {
-        navigateTo("/profile/deleted")
-        // setDeleted(true);
-      }
+      navigateTo("/profile", { state: { refetchPosts: true } })
     }).catch(err => console.log(err));
   }
 
@@ -80,14 +79,15 @@ const Blog = ({ id, title, intro, content, img, tags, isLoggedIn, author, create
 
 
           <div className="flex  gap-2 flex-wrap justify-center" >
-            {tags && tags.map((tag, index) => <p key={index} className='text-sm font-semibold text-center my-1 bg-sky-400 text-slate-800 p-2 rounded-lg'>{tag}</p>)}
+            {tags && tags.map((tag, index) => <p key={index} className='text-sm font-semibold text-center my-1 min-w-20 bg-sky-400 text-slate-800 p-2 rounded-lg'>{tag}</p>)}
           </div>
           <p className='text-lg text-center my-4'>{intro}</p>
 
         </div>
         <hr className='bg-red-500' />
       </div >
-      <hr />
+      <hr className='bg-slate-700 h-2 shadow-md w-1/2' />
+
     </>
 
   )
