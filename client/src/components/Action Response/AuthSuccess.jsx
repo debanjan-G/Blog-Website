@@ -8,7 +8,7 @@ const AuthSuccess = () => {
 
     return (
         <div className='flex flex-col h-screen items-center justify-center'>
-            <img src="https://www.pngitem.com/pimgs/m/423-4236284_png-images-success-icon-png-transparent-png-download.png" alt="" className='h-56' />
+            <img src="https://www.svgrepo.com/show/422280/correct-success-tick.svg" alt="" className='h-56 my-4' />
             <h1 className='text-5xl text-slate-700'>{action} successful</h1>
             <div className="flex my-4 gap-4">
                 <Link to="/">

@@ -31,7 +31,7 @@
   const customErrorHandler = require("./middlewares/custom-error");
   const authenticationMiddleware = require('./middlewares/authenticate');
   const UserRouter = require('./routes/UserRouter');
-const User = require('./models/User');
+// const User = require('./models/User');
 
   // Defining some routes directly
   app.get("/",(req,res)=>{

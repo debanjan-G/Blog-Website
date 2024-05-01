@@ -36,7 +36,7 @@ const Navbar = () => {
     <div className='flex justify-between items-center p-4'>
 
       <div className="links flex gap-10 font-semibold">
-        <h1 className='advent-pro-medium text-red-600 text-3xl shadow-lg'>TheBlogger</h1>
+        <h1 className='advent-pro-medium text-red-600 text-5xl shadow-lg'>Enigma</h1>
       </div>
 
       <div className='flex gap-10 font-semibold items-center'>

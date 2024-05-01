@@ -1,9 +1,10 @@
 const express = require('express')
-const {getUserPosts,getUserDetails} = require('../controllers/User')
+const {getUserPosts,getUserDetails, deleteUser} = require('../controllers/User')
 const UserRouter = express.Router()
 
 UserRouter.get("/:id/posts",getUserPosts)
-UserRouter.get("/:id",getUserDetails)
+UserRouter.route("/:id").get(getUserDetails).delete(deleteUser)
+// UserRouter.get("/:id",getUserDetails).delete(deleteUser)
 
 
 module.exports = UserRouter 

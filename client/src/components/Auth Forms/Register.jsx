@@ -5,6 +5,8 @@ import authBG from "../../assets/Auth-BG-3.jpg";
 import Header from '../Layout/Header';
 import Profile from '../Sections/Profile';
 import Loader from '../Utils/Loader';
+import lampImage from "../../assets/Lamp-bg.jpg"
+import whitebg from "../../assets/white-bg.jpg"
 
 
 const Register = () => {
@@ -112,10 +114,11 @@ const Register = () => {
       {isRegistered && <Profile statusCode={statusCode} />}
       {!isRegistered && (
         <>
-          <div className='bg-cover h-full  pb-10' style={{ backgroundImage: `url(${authBG})` }}>
+          <div className='bg-cover h-full  pb-10' style={{ backgroundImage: `url(${whitebg})` }}>
+            {/* <div className='h-full bg-slate-400 '> */}
             <Header />
-            <div className='flex  items-center justify-center mx-1/2 w-full'></div>
-            <div className='bg-slate-900 w-1/3 mx-auto p-10 rounded-lg'>
+            {/* <div className='flex  items-center justify-center mx-1/2 w-full'></div> */}
+            <div className='bg-slate-900 w-1/2 mx-auto p-10 rounded-lg'>
               <h1 className='text-slate-200 text-4xl text-center'>REGISTER FOR THE BLOG</h1>
               <form className="flex flex-col gap-4 h-full w-full p-5 text-lg" onSubmit={submitHandler}>
                 <label className='text-[#DBEAFE]'>Username</label>

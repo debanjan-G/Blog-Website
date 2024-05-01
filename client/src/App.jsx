@@ -15,6 +15,7 @@ import DeleteSuccessful from "./components/Action Response/DeleteSuccessful";
 import EditBlogForm from "./components/Blog Forms/EditBlogForm";
 import SuccessfulBlogEdit from "./components/Action Response/SuccessfulBlogEdit";
 import AuthSuccess from "./components/Action Response/AuthSuccess";
+import AccDeleted from "./components/Action Response/AccDeleted";
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/contact-form" element={<ContactForm />} />
           <Route path="/auth-done" element={<AuthSuccess />} />
+          <Route path="/account-deleted" element={<AccDeleted />} />
           <Route path="/profile"  >
             <Route path="" element={<Profile />} />
             <Route path="deleted" element={<DeleteSuccessful />} />

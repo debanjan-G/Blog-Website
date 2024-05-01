@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const User = require('../models/User');
-const { NotFoundError } = require('../errors');
+const { NotFoundError, BadRequestError } = require('../errors');
 const { StatusCodes } = require('http-status-codes');
 const Post = require('../models/Post');
 
@@ -29,4 +29,14 @@ const getUserDetails = async (req, res) => {
     res.status(StatusCodes.OK).json({user})
 }
 
-module.exports = { getUserDetails, getUserPosts }
+const deleteUser = async(req,res) =>{
+    const {id} =req.params;
+    console.log(req.params);
+    if(!id){
+        throw new BadRequestError("Provide valid user ID")
+    }
+    const user = await User.findByIdAndDelete(id)
+    res.status(StatusCodes.OK).json({success:true,deletedUser:user})
+}
+
+module.exports = { getUserDetails, getUserPosts, deleteUser }
