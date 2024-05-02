@@ -5,7 +5,6 @@ const UserSchema = new mongoose.Schema({
   username: {
     type: String,
     required: [true, "Kindly provide an username"],
-    unique: true,
     maxlength: 20,
     minlength:3,
   },
@@ -20,6 +19,10 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: [true, "Kindly provide a password to secure your profile"],
     minlength: 5
+  },
+  dp:{
+    type:String,
+    required:[true,"Please provide a Profile Picture"]
   }
 }, { timestamps: true });
 

@@ -4,7 +4,15 @@
   require('dotenv').config()
 
   const {StatusCodes} = require('http-status-codes')
+  const fileupload = require('express-fileupload')
+  const cloudinary = require('cloudinary').v2
 
+  // Configuring cloudinary
+  cloudinary.config({
+    cloud_name:process.env.CLOUDINARY_CLOUD_NAME,
+    api_key:process.env.CLOUDINARY_API_KEY,
+    api_secret:process.env.CLOUDINARY_API_SECRET
+  })
 
   // Importing the Post model
   const Post = require("./models/Post")
@@ -22,7 +30,8 @@
   //Importing Middlewares
   const customErrorHandler = require("./middlewares/custom-error");
   const authenticationMiddleware = require('./middlewares/authenticate');
-const UserRouter = require('./routes/UserRouter');
+  const UserRouter = require('./routes/UserRouter');
+// const User = require('./models/User');
 
   // Defining some routes directly
   app.get("/",(req,res)=>{
@@ -47,6 +56,8 @@ const UserRouter = require('./routes/UserRouter');
 
   // Middlewares
   app.use(express.json())
+  app.use(fileupload({useTempFiles:true}))
+  // Routers
   app.use("/api/v1/posts",authenticationMiddleware,PostsRouter)
   app.use("/api/v1/auth",AuthRouter)
   app.use("/api/v1/profile",UserRouter)
