@@ -6,6 +6,17 @@ import { jwtDecode } from "jwt-decode";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Blog from "../Blog/Blog";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogFooter,
+  DialogClose,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 
 const Profile = ({ statusCode }) => {
   const [posts, setPosts] = useState([]);
@@ -53,6 +64,10 @@ const Profile = ({ statusCode }) => {
 
   console.log(decoded);
 
+  const handleDeleteConfirmation = () => {
+    handleDelete();
+  };
+
   let welcomeMsg =
     "Welcome back! 🌟 You're all set to dive into the latest posts and discussions. Enjoy your stay!";
 
@@ -74,11 +89,34 @@ const Profile = ({ statusCode }) => {
             onClick={handleLogout}>
             Logout
           </button>
-          <button
-            className="bg-red-600 text-slate-100 font-semibold py-3 px-10 rounded-lg hover:bg-red-500"
-            onClick={handleDelete}>
-            Delete Account
-          </button>
+          <Dialog>
+            <DialogTrigger asChild>
+              <button className="bg-red-600 text-slate-100 font-semibold py-3 px-10 rounded-lg hover:bg-red-500">
+                Delete Account
+              </button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-[425px]">
+              <DialogHeader>
+                <DialogTitle>Delete profile</DialogTitle>
+              </DialogHeader>
+              <DialogDescription>
+                {"Your account can't be recovered once you delete it"}
+              </DialogDescription>
+              <DialogFooter>
+                <DialogClose>
+                  <Button type="cancel" className="bg-gray-400">
+                    Cancel
+                  </Button>
+                </DialogClose>
+                <Button
+                  type="submit"
+                  className="bg-red-600 hover:bg-red-900"
+                  onClick={handleDeleteConfirmation}>
+                  Delete
+                </Button>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
         </div>
       </div>
 
