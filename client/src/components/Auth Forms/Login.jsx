@@ -1,12 +1,12 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState, useRef } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import authBG from "../../assets/Auth-BG-3.jpg";
-import Header from '../Layout/Header';
-import axios from 'axios';
-import Profile from '../Sections/Profile';
-import FailedAuth from '../Action Response/FailedAuth';
-import lampImage from "../../assets/Lamp-bg.jpg"
-import whitebg from "../../assets/white-bg.jpg"
+import Header from "../Layout/Header";
+import axios from "axios";
+import Profile from "../Sections/Profile";
+import FailedAuth from "../Action Response/FailedAuth";
+import lampImage from "../../assets/Lamp-bg.jpg";
+import whitebg from "../../assets/white-bg.jpg";
 
 const Login = () => {
   const [userInput, setUserInput] = useState({});
@@ -16,21 +16,24 @@ const Login = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [statusCode, setStatusCode] = useState();
   const [error, setError] = useState(false);
-  const navigateTo = useNavigate()
+  const navigateTo = useNavigate();
 
   useEffect(() => {
     // Check if userInput has data before making the request
     if (Object.keys(userInput).length > 0) {
-      axios.post("/api/v1/auth/login", userInput)
-        .then(res => {
+      axios
+        .post("/api/v1/auth/login", userInput)
+        .then((res) => {
           console.log(res);
           const token = res.data.token;
+          const userId = res.data.user._id;
           localStorage.setItem("jwt", token);
+          localStorage.setItem("userId", userId);
           setIsLoggedIn(true);
           setStatusCode(res.status);
-          navigateTo("/auth-done", { state: { action: "Login" } })
+          navigateTo("/auth-done", { state: { action: "Login" } });
         })
-        .catch(err => {
+        .catch((err) => {
           setError(true);
           console.log(err);
         });
@@ -45,7 +48,7 @@ const Login = () => {
     setUserInput({
       // username,
       email,
-      password
+      password,
     });
   };
 
@@ -55,27 +58,54 @@ const Login = () => {
 
   return (
     <>
-      {isLoggedIn ? <Profile statusCode={statusCode} /> :
+      {isLoggedIn ? (
+        <Profile statusCode={statusCode} />
+      ) : (
         <>
-          <div className='bg-cover h-full  pb-10' style={{ backgroundImage: `url(${whitebg})` }}>
+          <div
+            className="bg-cover h-full  pb-10"
+            style={{ backgroundImage: `url(${whitebg})` }}>
             <Header />
             {/* <div className='flex  items-center justify-center mx-1/2 w-full'></div> */}
-            <div className='bg-slate-900 w-1/3 mx-auto p-10 rounded-lg'>
-              <h1 className='text-slate-200 text-4xl text-center'>LOGIN FOR THE BLOG</h1>
-              <form onSubmit={submitHandler} className="flex flex-col gap-3 w-full py-4 px-2 text-lg">
+            <div className="bg-slate-900 w-1/3 mx-auto p-10 rounded-lg">
+              <h1 className="text-slate-200 text-4xl text-center">
+                LOGIN FOR THE BLOG
+              </h1>
+              <form
+                onSubmit={submitHandler}
+                className="flex flex-col gap-3 w-full py-4 px-2 text-lg">
                 {/* <label className='text-[#DBEAFE]'>Name</label>
                 <input required ref={usernameRef} type="text" name="" id="username" className="bg-[#64748B] text-white py-2 px-4 rounded-md" /> */}
-                <label className='text-[#DBEAFE]'>Email</label>
-                <input required ref={emailRef} type="email" name="" id="email" className="bg-[#64748B] text-white py-2 px-4 rounded-md" />
-                <label className='text-[#DBEAFE]'>Password</label>
-                <input required ref={passwordRef} type="password" name="" id="password" className="bg-[#64748B] text-white py-2 px-4 rounded-md mb-4" />
-                <button className='bg-green-500 text-white font-semibold py-2 px-4 w-full rounded-md opacity-85 hover:opacity-100'>Log in</button>
+                <label className="text-[#DBEAFE]">Email</label>
+                <input
+                  required
+                  ref={emailRef}
+                  type="email"
+                  name=""
+                  id="email"
+                  className="bg-[#64748B] text-white py-2 px-4 rounded-md"
+                />
+                <label className="text-[#DBEAFE]">Password</label>
+                <input
+                  required
+                  ref={passwordRef}
+                  type="password"
+                  name=""
+                  id="password"
+                  className="bg-[#64748B] text-white py-2 px-4 rounded-md mb-4"
+                />
+                <button className="bg-green-500 text-white font-semibold py-2 px-4 w-full rounded-md opacity-85 hover:opacity-100">
+                  Log in
+                </button>
               </form>
-              <span className='text-white hover:text-green-500 block text-center mt-4'> <Link to="/register">New here? Click to register.</Link></span>
+              <span className="text-white hover:text-green-500 block text-center mt-4">
+                {" "}
+                <Link to="/register">New here? Click to register.</Link>
+              </span>
             </div>
           </div>
         </>
-      }
+      )}
     </>
   );
 };

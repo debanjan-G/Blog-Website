@@ -28,6 +28,7 @@ const Blog = ({
   isLoggedIn,
   author,
   createdAt,
+  likes,
 }) => {
   const [username, setUsername] = useState("");
   const navigateTo = useNavigate();
@@ -67,7 +68,8 @@ const Blog = ({
       .then((res) => {
         console.log(res);
         if (res.status === 200) {
-          navigateTo("/profile/deleted");
+          // navigateTo("/profile/");
+          navigateTo("/profile", { state: { refetchPosts: true } });
         }
         setIsDeleteDrawerOpen(false);
       })
@@ -129,7 +131,7 @@ const Blog = ({
         <div className="flex flex-col w-1/2 ">
           <p className="text-slate-800 text-center my-2">
             {" "}
-            {username} • {formattedDate}
+            {username} • {formattedDate} • Likes: {likes}
           </p>
           <h1 className="text-2xl font-semibold text-left">{title}</h1>
 

@@ -49,6 +49,7 @@ const Blogs = () => {
             img={post.imageURL}
             author={post.author}
             createdAt={post.createdAt}
+            likes={post.likes}
           />
         ))}
       </div>
