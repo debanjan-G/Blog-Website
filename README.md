@@ -2,6 +2,9 @@
 
 The Blogger is a full-stack application built to provide a seamless and engaging platform for users to share and discover blog posts.
 
+## Demo Video:
+https://github.com/user-attachments/assets/c703f77f-de7d-4761-b5c1-0a8be6a75716
+
 ## Features:
 - **User Registration & Sign-In**: Easily register or sign in to access the platform.
 - **View Blog Posts**: Browse through blog posts made by other users.
